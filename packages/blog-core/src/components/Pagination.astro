@@ -1,0 +1,46 @@
+---
+import type { PaginationInfo } from "../lib/pure.ts";
+import { t } from "../lib/i18n.ts";
+
+interface Props {
+  info: PaginationInfo;
+}
+
+const { info } = Astro.props;
+---
+
+{info.total > 1 && (
+  <nav aria-label={t.pagination}>
+    <ol class="pager">
+      {info.prevPath && (
+        <li>
+          <a href={info.prevPath} rel="prev" aria-label={t.previousPage}>
+            ‹
+          </a>
+        </li>
+      )}
+      {info.pages.map(({ page, path }) => (
+        <li>
+          {page === info.current ? (
+            <span aria-current="page">
+              <span class="sr-only">{t.page} </span>
+              {page}
+            </span>
+          ) : (
+            <a href={path}>
+              <span class="sr-only">{t.page} </span>
+              {page}
+            </a>
+          )}
+        </li>
+      ))}
+      {info.nextPath && (
+        <li>
+          <a href={info.nextPath} rel="next" aria-label={t.nextPage}>
+            ›
+          </a>
+        </li>
+      )}
+    </ol>
+  </nav>
+)}

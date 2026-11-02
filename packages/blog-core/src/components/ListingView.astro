@@ -1,0 +1,56 @@
+---
+import { breadcrumbLd, type BreadcrumbItem } from "@blog-factory/seo-kit";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "./Breadcrumbs.astro";
+import Pagination from "./Pagination.astro";
+import PostList from "./PostList.astro";
+import type { Listing } from "../lib/listing.ts";
+import { seoSite } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  intro?: string;
+  description: string;
+  path: string;
+  listing: Listing;
+  crumbs: readonly BreadcrumbItem[];
+  noindex?: boolean;
+}
+
+const {
+  eyebrow,
+  heading,
+  intro,
+  description,
+  path,
+  listing,
+  crumbs,
+  noindex = false,
+} = Astro.props;
+const { current } = listing.pagination;
+const title = current > 1 ? `${heading} – ${t.page} ${current}` : heading;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  noindex={noindex}
+  prevPath={listing.pagination.prevPath}
+  nextPath={listing.pagination.nextPath}
+  jsonLd={[breadcrumbLd(crumbs, seoSite)]}
+>
+  <Breadcrumbs items={crumbs} />
+  <header class="page-head">
+    <div>
+      <div class="eyebrow">{eyebrow}</div>
+      <h1>{title}</h1>
+      {intro && current === 1 && <p class="page-intro">{intro}</p>}
+    </div>
+    <span class="mono">{t.articleCount(listing.total)}</span>
+  </header>
+  <PostList posts={listing.posts} eagerCount={2} />
+  <Pagination info={listing.pagination} />
+</BaseLayout>

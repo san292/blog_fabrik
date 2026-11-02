@@ -1,0 +1,86 @@
+.prose {
+  font-family: var(--f-read), Georgia, serif;
+  font-size: 19px;
+  line-height: 1.72;
+  max-width: 68ch;
+  min-width: 0;
+}
+.prose h2 {
+  font-size: 26px;
+  margin: 36px 0 12px;
+  font-weight: 700;
+}
+.prose h3 {
+  font-size: 21px;
+  margin: 28px 0 10px;
+  font-weight: 700;
+}
+.prose p,
+.prose ul,
+.prose ol {
+  margin: 0 0 18px;
+}
+.prose li + li {
+  margin-top: 6px;
+}
+.prose a {
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+.prose img {
+  border-radius: var(--radius);
+}
+.prose :not(pre) > code {
+  font-family: var(--f-mono), ui-monospace, monospace;
+  font-size: 0.82em;
+  background: var(--accent-soft);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+.prose pre {
+  font-family: var(--f-mono), ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  overflow-x: auto;
+  margin: 0 0 20px;
+}
+.prose blockquote {
+  margin: 0 0 20px;
+  padding-left: 18px;
+  border-left: 3px solid var(--accent);
+  font-style: italic;
+  color: var(--muted);
+}
+.prose table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-family: var(--f-ui), system-ui, sans-serif;
+  font-size: 15px;
+  margin: 0 0 20px;
+}
+.prose th,
+.prose td {
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+/* Shiki : les couleurs claires sont en ligne, on bascule sur les variables sombres. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .astro-code {
+    background-color: var(--shiki-dark-bg) !important;
+  }
+  :root:not([data-theme="light"]) .astro-code span {
+    color: var(--shiki-dark) !important;
+  }
+}
+:root[data-theme="dark"] .astro-code {
+  background-color: var(--shiki-dark-bg) !important;
+}
+:root[data-theme="dark"] .astro-code span {
+  color: var(--shiki-dark) !important;
+}

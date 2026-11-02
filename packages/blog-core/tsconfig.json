@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node", "@testing-library/jest-dom/vitest"],
+    "jsxImportSource": "react"
+  },
+  // Le reste de src/ (routes, composants .astro, accès au contenu) est vérifié
+  // par `astro check` dans chaque site, qui fournit les types astro:content.
+  "include": [
+    "src/islands/**/*",
+    "src/scripts/**/*",
+    "src/config/**/*",
+    "src/lib/pure.ts",
+    "src/lib/__tests__/**/*",
+    "vitest.config.ts",
+    "vitest.setup.ts"
+  ]
+}

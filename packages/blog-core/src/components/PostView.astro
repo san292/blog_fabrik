@@ -1,0 +1,148 @@
+---
+import { Image, getImage } from "astro:assets";
+import { render } from "astro:content";
+import { blogPostingLd, breadcrumbLd, countWords, personLd } from "@blog-factory/seo-kit";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthorBox from "./AuthorBox.astro";
+import Avatar from "./Avatar.astro";
+import Breadcrumbs from "./Breadcrumbs.astro";
+import PostList from "./PostList.astro";
+import PostMeta from "./PostMeta.astro";
+import PrevNext from "./PrevNext.astro";
+import Toc from "./Toc.astro";
+import { getPosts, type Post } from "../lib/posts.ts";
+import { formatDate, isoDate, pickRelated } from "../lib/pure.ts";
+import { config, seoAuthor, seoSite, urls } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+import "../styles/prose.css";
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { entry, author } = post;
+const { Content, headings } = await render(entry);
+
+const posts = await getPosts();
+const index = posts.findIndex((p) => p.id === post.id);
+const newer = posts[index - 1];
+const older = posts[index + 1];
+const related = pickRelated(post, posts, 3);
+
+const crumbs = [
+  { name: t.home, path: urls.home() },
+  { name: post.categoryInfo.label, path: urls.category(post.category) },
+  { name: post.title, path: post.url },
+];
+
+const cover = await getImage({ src: entry.data.cover, width: 1600, format: "jpeg", quality: 80 });
+const jsonLd = [
+  blogPostingLd({
+    site: seoSite,
+    path: post.url,
+    title: post.title,
+    description: post.description,
+    image: {
+      url: cover.src,
+      width: 1600,
+      height: Math.round((1600 * entry.data.cover.height) / entry.data.cover.width),
+      alt: entry.data.coverAlt,
+    },
+    published: post.date,
+    ...(post.updated ? { modified: post.updated } : {}),
+    author: seoAuthor(author),
+    section: post.categoryInfo.label,
+    tags: post.tags,
+    wordCount: countWords(entry.body ?? ""),
+  }),
+  personLd(seoAuthor(author), seoSite),
+  breadcrumbLd(crumbs, seoSite),
+];
+---
+
+<BaseLayout
+  title={post.title}
+  description={post.description}
+  path={post.url}
+  type="article"
+  image={{ url: urls.og(post.id), width: 1200, height: 630, alt: post.title }}
+  noindex={entry.data.noindex}
+  published={post.date}
+  modified={post.updated}
+  authorName={author.name}
+  section={post.categoryInfo.label}
+  tags={post.tags}
+  canonicalPath={entry.data.canonical}
+  jsonLd={jsonLd}
+  fullWidth
+  preloadReadingFont
+>
+  <article>
+    <header class="article-head">
+      <Breadcrumbs items={crumbs} />
+      <PostMeta post={post} />
+      <h1>{post.title}</h1>
+      <p class="lede">{post.description}</p>
+      <div class="person">
+        <Avatar name={author.name} size={36} />
+        <div>
+          <a href={urls.author(author.slug)} rel="author">
+            {author.name}
+          </a>
+          <div class="mono" style="color:var(--muted)">
+            {t.publishedOn}{" "}
+            <time datetime={isoDate(post.date)}>{formatDate(post.date, config.lang)}</time>
+            {post.updated && (
+              <>
+                {" · "}
+                {t.updatedOn}{" "}
+                <time datetime={isoDate(post.updated)}>
+                  {formatDate(post.updated, config.lang)}
+                </time>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <Image
+      class="thumb article-hero"
+      src={entry.data.cover}
+      alt={entry.data.coverAlt}
+      widths={[640, 960, 1280, 1600]}
+      sizes="(max-width: 1180px) 100vw, 1148px"
+      loading="eager"
+      fetchpriority="high"
+    />
+
+    <div class="article-grid">
+      <div class="prose" data-pagefind-body>
+        <Content />
+        {post.tags.length > 0 && (
+          <ul class="tags" data-pagefind-ignore>
+            {post.tags.map((tag) => (
+              <li>
+                <a class="tag mono" href={urls.tag(tag)}>
+                  #{tag}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      <Toc headings={headings} />
+    </div>
+
+    <AuthorBox author={author} />
+    <PrevNext prev={older} next={newer} />
+  </article>
+
+  {related.length > 0 && (
+    <section class="related" aria-labelledby="related-title">
+      <h2 id="related-title">{t.readNext}</h2>
+      <PostList posts={related} />
+    </section>
+  )}
+</BaseLayout>

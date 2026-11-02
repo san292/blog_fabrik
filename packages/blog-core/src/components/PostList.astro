@@ -1,0 +1,20 @@
+---
+import type { Post } from "../lib/posts.ts";
+import PostCard from "./PostCard.astro";
+
+interface Props {
+  posts: readonly Post[];
+  /** Nombre de cartes chargées en priorité. */
+  eagerCount?: number;
+}
+
+const { posts, eagerCount = 0 } = Astro.props;
+---
+
+<ul class="posts">
+  {posts.map((post, index) => (
+    <li>
+      <PostCard post={post} eager={index < eagerCount} />
+    </li>
+  ))}
+</ul>

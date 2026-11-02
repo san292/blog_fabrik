@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.turbo/
+.vercel/
+.env
+.env.*
+!.env.example
+.DS_Store
+e2e/cypress/screenshots/
+e2e/cypress/videos/
+.lighthouseci/

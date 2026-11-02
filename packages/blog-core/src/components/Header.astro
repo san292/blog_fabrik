@@ -1,0 +1,139 @@
+---
+import { config, urls } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+
+const links =
+  config.nav.length > 0
+    ? config.nav
+    : [
+        { label: t.home, href: urls.home() },
+        ...config.categories
+          .slice(0, 4)
+          .map((c) => ({ label: c.label, href: urls.category(c.slug) })),
+      ];
+
+const items = links.map((link) => ({
+  ...link,
+  current: link.href === "/" ? path === "/" : path.startsWith(link.href),
+}));
+---
+
+<header class="site-header">
+  <div class="wrap hdr">
+    <a class="logo" href="/" aria-label={`${config.name}, ${t.home.toLowerCase()}`}>
+      <span class="logo-mark" aria-hidden="true">
+        {config.logoMark}
+      </span>
+      <span>{config.name}</span>
+    </a>
+    <div class="hdr-tools">
+      <button
+        type="button"
+        class="icon-btn nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label={t.openMenu}
+        data-nav-toggle
+        data-label-open={t.openMenu}
+        data-label-close={t.closeMenu}
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+      <div id="site-nav" class="nav-panel" data-open="false">
+        <nav aria-label={t.navLabel}>
+          <ul class="nav-list">
+            {items.map((item) => (
+              <li>
+                <a href={item.href} aria-current={item.current ? "page" : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+      <a class="icon-btn" href={urls.search()} aria-label={t.search}>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M20 20l-3.5-3.5"></path>
+        </svg>
+      </a>
+      <button
+        type="button"
+        class="icon-btn"
+        aria-pressed="false"
+        aria-label={t.toggleTheme}
+        data-theme-toggle
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { initDisclosure } from "../scripts/disclosure.ts";
+  import { initThemeToggle } from "../scripts/theme.ts";
+
+  const themeButton = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+  if (themeButton) initThemeToggle(themeButton);
+
+  const navToggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+  const navPanel = document.getElementById("site-nav");
+  if (navToggle && navPanel) {
+    initDisclosure(navToggle, navPanel, {
+      open: navToggle.dataset["labelOpen"] ?? "",
+      close: navToggle.dataset["labelClose"] ?? "",
+    });
+  }
+</script>
+
+<style>
+  @media (min-width: 821px) {
+    .hdr-tools {
+      flex: 1;
+      justify-content: flex-end;
+    }
+    .nav-panel {
+      margin-right: auto;
+      margin-left: 8px;
+    }
+    :global([data-header="center"]) .hdr-tools {
+      flex: none;
+    }
+    :global([data-header="center"]) .nav-panel {
+      margin: 0 12px 0 0;
+    }
+  }
+</style>

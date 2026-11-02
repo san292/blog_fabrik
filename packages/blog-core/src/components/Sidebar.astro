@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+import { getPosts, getTags } from "../lib/posts.ts";
+import { config, getAuthor, urls } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+import Avatar from "./Avatar.astro";
+
+const posts = await getPosts();
+const tags = (await getTags()).slice(0, 15);
+const author = getAuthor(undefined);
+const categories = config.categories.map((c) => ({
+  ...c,
+  count: posts.filter((p) => p.category === c.slug).length,
+}));
+---
+
+<aside class="sidebar" aria-label={t.sidebar}>
+  <section>
+    <h2 class="widget-title">{t.search}</h2>
+    <form class="search-form" role="search" action={urls.search()} method="get">
+      <label for="sidebar-q" class="sr-only">
+        {t.searchLabel}
+      </label>
+      <input
+        id="sidebar-q"
+        type="search"
+        name="q"
+        placeholder={t.searchPlaceholder}
+        autocomplete="off"
+      />
+      <button type="submit">{t.search}</button>
+    </form>
+  </section>
+
+  <section class="about">
+    <div class="person">
+      <Avatar name={author.name} />
+      <div>
+        <a href={urls.author(author.slug)}>{author.name}</a>
+        <div class="mono" style="color:var(--muted)">
+          {author.role}
+        </div>
+      </div>
+    </div>
+    <p>{config.tagline}</p>
+  </section>
+
+  <section>
+    <h2 class="widget-title">{t.categories}</h2>
+    <ul class="list">
+      {categories.map((c) => (
+        <li>
+          <a href={urls.category(c.slug)}>
+            <span>{c.label}</span>
+            <span class="count mono">{c.count}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="widget-title">{t.recent}</h2>
+    <ul class="list recent">
+      {posts.slice(0, 4).map((p) => (
+        <li>
+          <a href={p.url}>
+            <Image
+              class="thumb"
+              src={p.entry.data.cover}
+              alt=""
+              width={128}
+              height={128}
+              fit="cover"
+              loading="lazy"
+            />
+            <span>{p.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  {tags.length > 0 && (
+    <section>
+      <h2 class="widget-title">{t.tags}</h2>
+      <ul class="tags">
+        {tags.map((tag) => (
+          <li>
+            <a class="tag mono" href={urls.tag(tag.label)}>
+              #{tag.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</aside>

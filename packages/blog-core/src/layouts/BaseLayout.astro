@@ -1,0 +1,145 @@
+---
+import { Font } from "astro:assets";
+import {
+  buildPageMeta,
+  ldGraph,
+  publisherLd,
+  serializeJsonLd,
+  websiteLd,
+  type JsonObject,
+  type SeoImage,
+} from "@blog-factory/seo-kit";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Sidebar from "../components/Sidebar.astro";
+import { config, seoSite, urls } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  type?: "website" | "article" | "profile";
+  image?: SeoImage;
+  noindex?: boolean;
+  published?: Date;
+  modified?: Date | undefined;
+  authorName?: string;
+  section?: string;
+  tags?: readonly string[];
+  prevPath?: string | undefined;
+  nextPath?: string | undefined;
+  canonicalPath?: string | undefined;
+  jsonLd?: readonly JsonObject[];
+  fullWidth?: boolean;
+  preloadReadingFont?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  type = "website",
+  image = { url: urls.og("index"), width: 1200, height: 630, alt: config.name },
+  noindex = false,
+  published,
+  modified,
+  authorName,
+  section,
+  tags,
+  prevPath,
+  nextPath,
+  canonicalPath,
+  jsonLd = [],
+  fullWidth = false,
+  preloadReadingFont = false,
+} = Astro.props;
+
+const meta = buildPageMeta({
+  site: seoSite,
+  title,
+  description,
+  path,
+  type,
+  image,
+  noindex,
+  ...(published ? { publishedTime: published } : {}),
+  ...(modified ? { modifiedTime: modified } : {}),
+  ...(authorName ? { authorName } : {}),
+  ...(section ? { section } : {}),
+  ...(tags ? { tags } : {}),
+  ...(prevPath ? { prevPath } : {}),
+  ...(nextPath ? { nextPath } : {}),
+  ...(canonicalPath ? { canonicalPath } : {}),
+});
+
+const publisher = {
+  name: config.publisher.name,
+  url: "/",
+  ...(config.publisher.logo ? { logo: config.publisher.logo } : {}),
+};
+const graph = serializeJsonLd(
+  ldGraph(websiteLd(seoSite, config.description), publisherLd(seoSite, publisher), ...jsonLd),
+);
+
+const { accent, accentDark = accent } = config.theme;
+const accentCss = `:root{--accent:${accent};--accent-dark:${accentDark}}`;
+const showSidebar = !fullWidth && config.layout.sidebar !== "none";
+---
+
+<!doctype html>
+<html
+  lang={config.lang}
+  data-sidebar={config.layout.sidebar}
+  data-header={config.layout.header}
+  data-post-list={config.layout.postList}
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{meta.title}</title>
+    {meta.meta.map((m) =>
+      m.attr === "name" ? (
+        <meta name={m.key} content={m.content} />
+      ) : (
+        <meta property={m.key} content={m.content} />
+      ),
+    )}
+    {meta.links.map((l) => (
+      <link rel={l.rel} href={l.href} />
+    ))}
+    <link rel="alternate" type="application/rss+xml" title={config.name} href={urls.rss()} />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content={accent} />
+    <script is:inline>
+      try {
+        const saved = localStorage.getItem("theme");
+        if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
+      } catch {
+        // Stockage indisponible : le thème du système s'applique.
+      }
+    </script>
+    <style is:inline set:html={accentCss}></style>
+    <Font cssVariable="--f-display" preload />
+    <Font cssVariable="--f-ui" preload />
+    <Font cssVariable="--f-read" preload={preloadReadingFont} />
+    <Font cssVariable="--f-mono" />
+    <script type="application/ld+json" is:inline set:html={graph} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip" href="#content">
+      {t.skip}
+    </a>
+    <Header path={path} />
+    <div class:list={["wrap", "main", { full: !showSidebar }]}>
+      <main id="content" class="content" tabindex="-1">
+        <slot />
+      </main>
+      {showSidebar && <Sidebar />}
+    </div>
+    <Footer />
+  </body>
+</html>

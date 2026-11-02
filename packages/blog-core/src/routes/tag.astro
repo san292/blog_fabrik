@@ -1,0 +1,44 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import ListingView from "../components/ListingView.astro";
+import { isTagIndexable, restParam, tagListing } from "../lib/listing.ts";
+import { getTags } from "../lib/posts.ts";
+import { pagePath } from "../lib/pure.ts";
+import { config, urls } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+
+export const getStaticPaths = (async () => {
+  const tags = await getTags();
+  const paths = await Promise.all(
+    tags.map(async (tag) => {
+      const { pagination } = await tagListing(tag.slug, 1);
+      return Array.from({ length: pagination.total }, (_, i) => ({
+        params: { tag: tag.slug, page: restParam(i + 1) },
+        props: { tagSlug: tag.slug, page: i + 1 },
+      }));
+    }),
+  );
+  return paths.flat();
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { tagSlug, page }: Props = Astro.props;
+const listing = await tagListing(tagSlug, page);
+const base = urls.tag(listing.label);
+const description = `${t.articleCount(listing.total)} : ${listing.posts
+  .map((p) => p.title)
+  .join(", ")}`.slice(0, 157);
+---
+
+<ListingView
+  eyebrow={t.tag}
+  heading={`#${listing.label}`}
+  description={description}
+  path={pagePath(base, page, config.routes.page)}
+  listing={listing}
+  noindex={!isTagIndexable(listing.total)}
+  crumbs={[
+    { name: t.home, path: urls.home() },
+    { name: `#${listing.label}`, path: base },
+  ]}
+/>

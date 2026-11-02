@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Search from "../islands/Search.tsx";
+import { urls } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+
+const labels = {
+  input: t.searchLabel,
+  placeholder: t.searchPlaceholder,
+  loading: t.searchLoading,
+  empty: t.searchEmpty,
+  unavailable: t.searchUnavailable,
+  countOne: t.resultOne,
+  countMany: t.resultMany,
+};
+---
+
+<BaseLayout
+  title={t.searchTitle}
+  description={t.searchDescription}
+  path={urls.search()}
+  noindex
+  fullWidth
+>
+  <header class="page-head">
+    <h1>{t.searchTitle}</h1>
+  </header>
+  <div class="search-wrap">
+    <Search client:only="react" labels={labels} />
+  </div>
+</BaseLayout>
+
+<style>
+  .search-wrap {
+    max-width: 720px;
+  }
+  .search-wrap :global(.search-status) {
+    color: var(--muted);
+    min-height: 1.6em;
+    margin: 14px 0;
+  }
+  .search-wrap :global(.search-results a) {
+    display: block;
+    padding: 14px 0;
+  }
+  .search-wrap :global(.search-results strong) {
+    display: block;
+    font-family: var(--f-display), system-ui, sans-serif;
+    font-size: 19px;
+    margin-bottom: 4px;
+  }
+  .search-wrap :global(.search-excerpt) {
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .search-wrap :global(mark) {
+    background: var(--accent-soft);
+    color: inherit;
+    padding: 0 2px;
+  }
+</style>

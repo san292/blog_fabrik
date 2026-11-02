@@ -1,0 +1,24 @@
+---
+import type { Author } from "../config/schema.ts";
+import { urls } from "../lib/site.ts";
+import Avatar from "./Avatar.astro";
+
+interface Props {
+  author: Author;
+}
+
+const { author } = Astro.props;
+---
+
+<aside class="author-box" aria-label={author.name}>
+  <Avatar name={author.name} size={52} />
+  <div>
+    <a href={urls.author(author.slug)} rel="author">
+      {author.name}
+    </a>
+    <div class="mono" style="color:var(--muted)">
+      {author.role}
+    </div>
+    <p>{author.bio}</p>
+  </div>
+</aside>

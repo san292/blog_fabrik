@@ -1,0 +1,16 @@
+{
+  "name": "e2e",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "e2e": "start-server-and-test \"pnpm --filter @sites/${SITE:-carnet-front} preview\" http://localhost:4321 cy:run"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "cypress": "^16.2.1",
+    "start-server-and-test": "^3.0.13",
+    "typescript": "~6.0.3"
+  }
+}

@@ -1,0 +1,28 @@
+---
+import type { Post } from "../lib/posts.ts";
+import { formatDate, isoDate } from "../lib/pure.ts";
+import { config, urls } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+
+interface Props {
+  post: Post;
+  linkCategory?: boolean;
+}
+
+const { post, linkCategory = true } = Astro.props;
+---
+
+<div class="meta mono">
+  {linkCategory ? (
+    <a class="cat-link" href={urls.category(post.category)}>
+      {post.categoryInfo.label}
+    </a>
+  ) : (
+    <span class="cat-link">{post.categoryInfo.label}</span>
+  )}
+  <time datetime={isoDate(post.date)}>{formatDate(post.date, config.lang)}</time>
+  <span aria-hidden="true">·</span>
+  <span>
+    {post.readingTime} {t.minRead}
+  </span>
+</div>

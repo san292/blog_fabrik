@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PostList from "../components/PostList.astro";
+import { getPosts } from "../lib/posts.ts";
+import { urls } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+
+const posts = (await getPosts()).slice(0, 4);
+---
+
+<BaseLayout title={t.notFoundTitle} description={t.notFoundText} path="/404/" noindex>
+  <header class="page-head">
+    <div>
+      <div class="eyebrow">404</div>
+      <h1>{t.notFoundTitle}</h1>
+      <p class="page-intro">{t.notFoundText}</p>
+    </div>
+    <a class="tag" href={urls.home()}>
+      {t.backHome}
+    </a>
+  </header>
+  <PostList posts={posts} />
+</BaseLayout>

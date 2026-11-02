@@ -1,0 +1,14 @@
+packages:
+  - "packages/*"
+  - "sites/*"
+  - "!sites/_template"
+  - "e2e"
+
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - cypress
+
+# Rend les renderers Astro résolvables depuis chaque site (îlots React).
+publicHoistPattern:
+  - "@astrojs/*"

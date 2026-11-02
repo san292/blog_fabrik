@@ -1,0 +1,6 @@
+dist
+.astro
+.turbo
+.vercel
+node_modules
+pnpm-lock.yaml

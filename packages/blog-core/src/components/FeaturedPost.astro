@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import type { Post } from "../lib/posts.ts";
+import PostMeta from "./PostMeta.astro";
+import { t } from "../lib/i18n.ts";
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="featured">
+  <Image
+    class="thumb"
+    src={post.entry.data.cover}
+    alt={post.entry.data.coverAlt}
+    widths={[480, 720, 960, 1280]}
+    sizes="(max-width: 700px) 100vw, (max-width: 1180px) 50vw, 560px"
+    loading="eager"
+    fetchpriority="high"
+    style="aspect-ratio:16/10"
+  />
+  <div>
+    <span class="eyebrow">{t.featured}</span>
+    <h2>
+      <a class="card-link" href={post.url}>
+        {post.title}
+      </a>
+    </h2>
+    <p>{post.description}</p>
+    <PostMeta post={post} />
+  </div>
+</article>

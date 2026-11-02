@@ -1,0 +1,70 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { breadcrumbLd, personLd } from "@blog-factory/seo-kit";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Avatar from "../components/Avatar.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import PostList from "../components/PostList.astro";
+import { getPosts } from "../lib/posts.ts";
+import { config, seoAuthor, seoSite, urls } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+
+export const getStaticPaths = (() =>
+  config.authors.map((author) => ({
+    params: { author: author.slug },
+    props: { author },
+  }))) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { author }: Props = Astro.props;
+const posts = (await getPosts()).filter((p) => p.author.slug === author.slug);
+const path = urls.author(author.slug);
+const crumbs = [
+  { name: t.home, path: urls.home() },
+  { name: author.name, path },
+];
+const profile = {
+  "@type": "ProfilePage",
+  url: new URL(path, seoSite.url).href,
+  mainEntity: personLd(seoAuthor(author), seoSite),
+};
+---
+
+<BaseLayout
+  title={`${author.name}, ${author.role}`}
+  description={author.bio.slice(0, 157)}
+  path={path}
+  type="profile"
+  jsonLd={[profile, breadcrumbLd(crumbs, seoSite)]}
+>
+  <Breadcrumbs items={crumbs} />
+  <header class="author-box" style="margin-top:0">
+    <Avatar name={author.name} size={64} />
+    <div>
+      <div class="eyebrow">{t.author}</div>
+      <h1 style="font-size:clamp(26px,3.4vw,36px)">{author.name}</h1>
+      <div class="mono" style="color:var(--muted)">
+        {author.role}
+      </div>
+      <p>{author.bio}</p>
+      {author.sameAs.length > 0 && (
+        <ul class="tags" style="margin-top:12px">
+          {author.sameAs.map((url) => (
+            <li>
+              <a class="tag mono" href={url} rel="me noopener">
+                {new URL(url).hostname.replace(/^www\./, "")}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </header>
+  <div class="page-head">
+    <h2>
+      {t.postsBy} {author.name}
+    </h2>
+    <span class="mono">{t.articleCount(posts.length)}</span>
+  </div>
+  <PostList posts={posts} />
+</BaseLayout>

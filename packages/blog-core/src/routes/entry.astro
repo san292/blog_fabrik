@@ -1,0 +1,58 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import { breadcrumbLd } from "@blog-factory/seo-kit";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import PostView from "../components/PostView.astro";
+import { getPages, getPosts } from "../lib/posts.ts";
+import { config, seoSite, urls } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+import "../styles/prose.css";
+
+export const getStaticPaths = (async () => {
+  const [posts, pages] = await Promise.all([getPosts(), getPages()]);
+  const reserved = new Set<string>([...Object.values(config.routes), "og", "pagefind", "404"]);
+  const seen = new Set<string>();
+  for (const id of [...posts.map((p) => p.id), ...pages.map((p) => p.id)]) {
+    if (reserved.has(id)) throw new Error(`Le slug « ${id} » est réservé par une route du site.`);
+    if (seen.has(id)) throw new Error(`Le slug « ${id} » est utilisé deux fois (article et page).`);
+    seen.add(id);
+  }
+  return [
+    ...posts.map((post) => ({ params: { slug: post.id }, props: { kind: "post" as const, post } })),
+    ...pages.map((page) => ({ params: { slug: page.id }, props: { kind: "page" as const, page } })),
+  ];
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const props: Props = Astro.props;
+const page = props.kind === "page" ? props.page : undefined;
+const rendered = page ? await render(page) : undefined;
+const crumbs = page
+  ? [
+      { name: t.home, path: urls.home() },
+      { name: page.data.title, path: urls.post(page.id) },
+    ]
+  : [];
+---
+
+{props.kind === "post" && <PostView post={props.post} />}
+{page && rendered && (
+  <BaseLayout
+    title={page.data.title}
+    description={page.data.description}
+    path={urls.post(page.id)}
+    noindex={page.data.noindex}
+    jsonLd={[breadcrumbLd(crumbs, seoSite)]}
+    fullWidth
+  >
+    <article class="article-head">
+      <Breadcrumbs items={crumbs} />
+      <h1>{page.data.title}</h1>
+      <div class="prose">
+        <rendered.Content />
+      </div>
+    </article>
+  </BaseLayout>
+)}

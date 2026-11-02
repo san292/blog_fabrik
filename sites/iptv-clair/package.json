@@ -1,0 +1,23 @@
+{
+  "name": "@sites/iptv-clair",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview --port 4321",
+    "typecheck": "astro check",
+    "lighthouse": "lhci autorun --config=lighthouserc.json"
+  },
+  "dependencies": {
+    "@blog-factory/core": "workspace:*",
+    "astro": "^7.4.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "typescript": "~6.0.3"
+  }
+}

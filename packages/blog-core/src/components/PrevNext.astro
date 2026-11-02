@@ -1,0 +1,32 @@
+---
+import type { Post } from "../lib/posts.ts";
+import { t } from "../lib/i18n.ts";
+
+interface Props {
+  prev: Post | undefined;
+  next: Post | undefined;
+}
+
+const { prev, next } = Astro.props;
+---
+
+{(prev || next) && (
+  <nav class="prevnext" aria-label={t.neighbours}>
+    {prev && (
+      <a href={prev.url}>
+        <span class="mono" style="color:var(--muted)">
+          ← {t.previous}
+        </span>
+        <strong>{prev.title}</strong>
+      </a>
+    )}
+    {next && (
+      <a class="next" href={next.url}>
+        <span class="mono" style="color:var(--muted)">
+          {t.next} →
+        </span>
+        <strong>{next.title}</strong>
+      </a>
+    )}
+  </nav>
+)}

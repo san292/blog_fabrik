@@ -1,0 +1,24 @@
+---
+title: "Remplacez ce titre par votre premier article"
+description: "Résumé de l'article en une ou deux phrases, avec le mot-clé principal. Il s'affiche dans Google : entre 120 et 160 caractères."
+pubDate: 2026-11-01
+category: general
+tags: ["exemple"]
+cover: ./covers/premier-article.jpg
+coverAlt: "Illustration abstraite de l'article d'exemple"
+draft: true
+---
+
+Cet article est un brouillon d'exemple : il n'apparaît qu'en développement (`draft: true`).
+
+## Structurer avec des titres
+
+Chaque titre de niveau 2 ou 3 alimente le sommaire automatique. Un seul H1 par page : c'est le titre de l'article, géré par le thème.
+
+## Images
+
+Placez les images à côté de l'article et référencez-les en Markdown. Elles sont converties en AVIF/WebP et redimensionnées au build.
+
+## Publier
+
+Passez `draft` à `false`, puis lancez le build. Le schéma vérifie le titre, la description, la catégorie et le texte alternatif de la cover.

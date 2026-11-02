@@ -1,0 +1,40 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import ListingView from "../components/ListingView.astro";
+import { categoryListing, restParam } from "../lib/listing.ts";
+import { pagePath } from "../lib/pure.ts";
+import { config, urls } from "../lib/site.ts";
+import { t } from "../lib/i18n.ts";
+
+export const getStaticPaths = (async () => {
+  const paths = await Promise.all(
+    config.categories.map(async (category) => {
+      const { pagination } = await categoryListing(category.slug, 1);
+      return Array.from({ length: pagination.total }, (_, i) => ({
+        params: { category: category.slug, page: restParam(i + 1) },
+        props: { category, page: i + 1 },
+      }));
+    }),
+  );
+  return paths.flat();
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { category, page }: Props = Astro.props;
+const listing = await categoryListing(category.slug, page);
+const base = urls.category(category.slug);
+---
+
+<ListingView
+  eyebrow={t.category}
+  heading={category.label}
+  intro={category.description}
+  description={category.description}
+  path={pagePath(base, page, config.routes.page)}
+  listing={listing}
+  noindex={listing.total === 0}
+  crumbs={[
+    { name: t.home, path: urls.home() },
+    { name: category.label, path: base },
+  ]}
+/>
