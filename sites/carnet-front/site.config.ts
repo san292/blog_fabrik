@@ -67,6 +67,6 @@ export default defineSiteConfig({
       mono: "jetbrains-mono",
     },
   },
-  layout: { postList: "grid-2", sidebar: "right", header: "left", featuredPost: true },
+  layout: { postList: "grid-2", sidebar: "left", header: "center", featuredPost: true },
   postsPerPage: 6,
 });
