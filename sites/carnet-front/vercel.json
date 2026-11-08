@@ -3,7 +3,7 @@
   "framework": "astro",
   "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
   "buildCommand": "cd ../.. && pnpm turbo run build --filter=@sites/carnet-front",
-  "outputDirectory": "sites/carnet-front/dist",
+  "outputDirectory": "dist",
   "trailingSlash": true,
   "headers": [
     {
