@@ -1,6 +1,6 @@
 ---
 title: "Mentions légales"
-description: "Mentions légales de IPTV Clair : éditeur du site, directeur de la publication, hébergeur et informations sur les données personnelles."
+description: "Mentions légales de Télé Claire : éditeur du site, directeur de la publication, hébergeur et informations sur les données personnelles."
 ---
 
 ## Éditeur du site

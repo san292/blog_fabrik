@@ -167,6 +167,11 @@ button {
   font-size: 13px;
   font-weight: 500;
 }
+.logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
 .hdr-tools {
   display: flex;
   gap: 8px;
@@ -575,12 +580,12 @@ button {
 }
 .recent a {
   display: grid;
-  grid-template-columns: 64px minmax(0, 1fr);
+  grid-template-columns: 96px minmax(0, 1fr);
   gap: 12px;
   align-items: center;
 }
 .recent .thumb {
-  aspect-ratio: 1;
+  aspect-ratio: 16 / 9;
 }
 .recent span {
   font-weight: 500;

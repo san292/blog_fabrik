@@ -5,7 +5,7 @@ pubDate: 2026-10-30
 category: installation
 tags: ["wi-fi", "débit", "dépannage"]
 cover: ./covers/iptv-coupures-saccades-solutions.jpg
-coverAlt: "Bandes diagonales vertes évoquant un flux de données réseau"
+coverAlt: "Écran de télévision, carte électronique et marteau sur fond sombre"
 ---
 L'image se fige en plein match, la qualité chute d'un coup, le son se décale : avec la télévision par Internet, la plupart de ces problèmes viennent du réseau de la maison, pas du service. Voici comment trouver la cause et la corriger, de la plus fréquente à la plus rare.
 

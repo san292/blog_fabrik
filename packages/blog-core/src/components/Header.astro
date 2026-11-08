@@ -27,10 +27,18 @@ const items = links.map((link) => ({
 <header class="site-header">
   <div class="wrap hdr">
     <a class="logo" href="/" aria-label={`${config.name}, ${t.home.toLowerCase()}`}>
-      <span class="logo-mark" aria-hidden="true">
-        {config.logoMark}
-      </span>
-      <span>{config.name}</span>
+      {
+        config.logo ? (
+          <img class="logo-img" src={config.logo} alt={config.name} />
+        ) : (
+          <>
+            <span class="logo-mark" aria-hidden="true">
+              {config.logoMark}
+            </span>
+            <span>{config.name}</span>
+          </>
+        )
+      }
     </a>
     <div class="hdr-tools">
       <button

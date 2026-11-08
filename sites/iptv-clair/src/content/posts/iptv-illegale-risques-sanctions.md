@@ -5,7 +5,7 @@ pubDate: 2026-10-31
 category: legalite
 tags: ["arcom", "piratage", "sanctions"]
 cover: ./covers/iptv-illegale-risques-sanctions.jpg
-coverAlt: "Points verts dispersés évoquant des serveurs pirates repérés et bloqués"
+coverAlt: "Boîtier IPTV et télécommande devant un panneau d'interdiction rouge"
 ---
 Des milliers de chaînes et tous les matchs pour quelques euros par mois : les abonnements IPTV pirates attirent de plus en plus de monde. Selon l'Arcom, 11 % des internautes français déclarent y avoir recours, et les deux tiers ont commencé il y a moins de trois ans. Mais la situation a beaucoup changé en 2026 : premières amendes pour des abonnés, nouvelle loi et blocages en plein match. Voici ce que vous risquez réellement.
 

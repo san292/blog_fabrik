@@ -1,22 +1,23 @@
 import { defineSiteConfig } from "@blog-factory/core/config";
 
 export default defineSiteConfig({
-  name: "IPTV Clair",
+  name: "Télé Claire",
   tagline: "Le guide indépendant pour regarder la télé par Internet, légalement et sans galère.",
   description:
-    "IPTV Clair explique la télé par Internet : fonctionnement, offres légales, appareils, qualité d'image et risques de l'IPTV pirate en France.",
+    "Télé Claire explique la télé par Internet : fonctionnement, offres légales, appareils, qualité d'image et risques de l'IPTV pirate en France.",
   url: "https://iptv-clair.fr",
   lang: "fr",
   locale: "fr_FR",
   logoMark: "TV",
-  publisher: { name: "IPTV Clair" },
+  logo: "/logo.png",
+  publisher: { name: "Télé Claire" },
   authors: [
     {
       // À remplacer par une vraie personne (nom, expérience, profils) : c'est un signal E-E-A-T fort.
       slug: "redaction",
-      name: "Rédaction IPTV Clair",
+      name: "Rédaction Télé Claire",
       role: "Équipe éditoriale",
-      bio: "La rédaction d'IPTV Clair teste les offres et les appareils de télévision par Internet, et s'appuie sur les publications de l'Arcom et de la presse spécialisée.",
+      bio: "La rédaction de Télé Claire teste les offres et les appareils de télévision par Internet, et s'appuie sur les publications de l'Arcom et de la presse spécialisée.",
       sameAs: [],
     },
   ],

@@ -5,7 +5,7 @@ pubDate: 2026-10-27
 category: comprendre
 tags: ["iptv", "tnt", "streaming"]
 cover: ./covers/iptv-definition-fonctionnement.jpg
-coverAlt: "Ondes concentriques vertes symbolisant la diffusion d'un signal télé"
+coverAlt: "Box et écran de télévision illustrant le trajet du signal IPTV"
 ---
 Le mot IPTV revient partout : dans les offres des box, sur les forums, dans les articles sur le piratage. Pourtant, il désigne d'abord une technique tout à fait banale. Si vous regardez la télé avec la box de votre opérateur, vous utilisez probablement déjà l'IPTV sans le savoir.
 

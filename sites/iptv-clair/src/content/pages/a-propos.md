@@ -1,9 +1,9 @@
 ---
-title: "À propos d'IPTV Clair"
-description: "IPTV Clair est un guide indépendant sur la télévision par Internet : notre méthode, nos sources et notre engagement à ne recommander que des offres légales."
+title: "À propos de Télé Claire"
+description: "Télé Claire est un guide indépendant sur la télévision par Internet : notre méthode, nos sources et notre engagement à ne recommander que des offres légales."
 ---
 
-IPTV Clair aide les téléspectateurs à s'y retrouver dans la télévision par Internet : comprendre la technologie, choisir un appareil, régler les problèmes de qualité et trouver les offres légales qui correspondent à leurs besoins.
+Télé Claire aide les téléspectateurs à s'y retrouver dans la télévision par Internet : comprendre la technologie, choisir un appareil, régler les problèmes de qualité et trouver les offres légales qui correspondent à leurs besoins.
 
 ## Notre ligne éditoriale
 

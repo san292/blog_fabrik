@@ -5,7 +5,7 @@ pubDate: 2026-10-29
 category: equipement
 tags: ["smart tv", "android tv", "apple tv"]
 cover: ./covers/quel-appareil-pour-iptv.jpg
-coverAlt: "Grille de carrés verts représentant des écrans et des applications"
+coverAlt: "Plusieurs appareils diffusant la télévision par Internet dans un salon"
 ---
 Pour regarder la télévision par Internet, l'appareil compte autant que l'abonnement. Un boîtier lent rend l'expérience pénible, une Smart TV trop ancienne n'aura plus les applications à jour. Voici comment choisir, selon votre usage et votre budget.
 

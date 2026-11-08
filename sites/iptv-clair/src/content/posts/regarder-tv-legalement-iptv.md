@@ -5,7 +5,7 @@ pubDate: 2026-10-28
 category: offres-legales
 tags: ["offres légales", "molotov", "applications"]
 cover: ./covers/regarder-tv-legalement-iptv.jpg
-coverAlt: "Barres verticales vertes et blanches évoquant un bouquet de chaînes"
+coverAlt: "Salon avec une télévision diffusant plusieurs chaînes par Internet"
 ---
 Bonne nouvelle : en France, on peut regarder la quasi-totalité des chaînes gratuites par Internet, légalement et sans payer un centime. Pour le sport et le cinéma, il faut en revanche passer par des services payants. Voici toutes les options, de la plus simple à la plus complète.
 
