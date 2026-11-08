@@ -54,6 +54,40 @@ describe("buildPageMeta", () => {
     expect(meta.filter((m) => m.key === "article:tag")).toHaveLength(2);
   });
 
+  it("ajoute twitter:creator sur un article quand l'auteur a un handle", () => {
+    const meta = buildPageMeta({
+      site,
+      title: "Hooks",
+      description: "Desc",
+      path: "/hooks/",
+      type: "article",
+      publishedTime: new Date("2026-10-21T00:00:00Z"),
+      authorTwitter: "@alaindo",
+    }).meta;
+    expect(find(meta, "twitter:creator")).toBe("@alaindo");
+  });
+
+  it("n'ajoute pas twitter:creator hors article ou sans handle", () => {
+    const sansHandle = buildPageMeta({
+      site,
+      title: "Hooks",
+      description: "Desc",
+      path: "/hooks/",
+      type: "article",
+      publishedTime: new Date("2026-10-21T00:00:00Z"),
+    }).meta;
+    expect(find(sansHandle, "twitter:creator")).toBeUndefined();
+
+    const page = buildPageMeta({
+      site,
+      title: "A",
+      description: "B",
+      path: "/",
+      authorTwitter: "@alaindo",
+    }).meta;
+    expect(find(page, "twitter:creator")).toBeUndefined();
+  });
+
   it("ajoute les liens prev et next de pagination", () => {
     const { links } = buildPageMeta({
       site,

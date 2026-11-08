@@ -11,15 +11,58 @@ export const publisherId = (site: SeoSite): string => `${absoluteUrl("/", site.u
 export const personId = (author: SeoAuthor, site: SeoSite): string =>
   `${absoluteUrl(author.url, site.url)}#person`;
 
-export const websiteLd = (site: SeoSite, description: string): JsonObject => ({
-  "@type": "WebSite",
-  "@id": websiteId(site),
-  url: absoluteUrl("/", site.url),
-  name: site.name,
-  description,
-  inLanguage: site.lang,
-  publisher: { "@id": publisherId(site) },
-});
+/**
+ * Nœud WebSite. Si `searchPath` est fourni (ex. "/recherche/"), déclare un
+ * SearchAction (Sitelinks SearchBox) pointant vers `?q={search_term_string}`.
+ */
+export const websiteLd = (
+  site: SeoSite,
+  description: string,
+  searchPath?: string,
+): JsonObject =>
+  compact({
+    "@type": "WebSite",
+    "@id": websiteId(site),
+    url: absoluteUrl("/", site.url),
+    name: site.name,
+    description,
+    inLanguage: site.lang,
+    publisher: { "@id": publisherId(site) },
+    potentialAction: searchPath
+      ? {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${absoluteUrl(searchPath, site.url)}?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
+        }
+      : undefined,
+  });
+
+export interface CollectionPageInput {
+  readonly site: SeoSite;
+  readonly path: string;
+  readonly name: string;
+  readonly description: string;
+  /** "CollectionPage" (défaut) pour catégories/tags, "Blog" pour l'accueil. */
+  readonly type?: "CollectionPage" | "Blog";
+}
+
+/** Nœud de page de liste (accueil, catégorie, étiquette), relié au WebSite. */
+export const collectionPageLd = (input: CollectionPageInput): JsonObject => {
+  const url = absoluteUrl(input.path, input.site.url);
+  return compact({
+    "@type": input.type ?? "CollectionPage",
+    "@id": url,
+    url,
+    name: input.name,
+    description: input.description,
+    inLanguage: input.site.lang,
+    isPartOf: { "@id": websiteId(input.site) },
+    publisher: { "@id": publisherId(input.site) },
+  });
+};
 
 export const publisherLd = (site: SeoSite, publisher: SeoPublisher): JsonObject =>
   compact({

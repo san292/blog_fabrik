@@ -47,6 +47,7 @@ const fr = {
   rights: "Tous droits réservés.",
   footerNav: "Liens du pied de page",
   sidebar: "Barre latérale",
+  backToTop: "Revenir en haut de la page",
 };
 
 type Dictionary = typeof fr;
@@ -97,6 +98,7 @@ const en: Dictionary = {
   rights: "All rights reserved.",
   footerNav: "Footer links",
   sidebar: "Sidebar",
+  backToTop: "Back to top",
 };
 
 export const t: Dictionary = config.lang.startsWith("en") ? en : fr;

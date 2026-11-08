@@ -54,6 +54,7 @@ export const buildPageMeta = (input: PageMetaInput): PageMeta => {
         (input.modifiedTime ?? input.publishedTime)?.toISOString(),
       ),
       ...tag("property", "article:author", input.authorName),
+      ...tag("name", "twitter:creator", input.authorTwitter),
       ...tag("property", "article:section", input.section),
       ...(input.tags ?? []).flatMap((t) => tag("property", "article:tag", t)),
     );

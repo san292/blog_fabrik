@@ -1,11 +1,12 @@
 ---
+import { collectionPageLd } from "@blog-factory/seo-kit";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FeaturedPost from "./FeaturedPost.astro";
 import PostList from "./PostList.astro";
 import Pagination from "./Pagination.astro";
 import { homeListing } from "../lib/listing.ts";
 import { pagePath } from "../lib/pure.ts";
-import { config } from "../lib/site.ts";
+import { config, seoSite } from "../lib/site.ts";
 import { t } from "../lib/i18n.ts";
 
 interface Props {
@@ -28,6 +29,15 @@ const description = isFirst
   path={path}
   prevPath={pagination.prevPath}
   nextPath={pagination.nextPath}
+  jsonLd={[
+    collectionPageLd({
+      site: seoSite,
+      path,
+      name: isFirst ? config.name : title,
+      description,
+      type: "Blog",
+    }),
+  ]}
 >
   {isFirst ? (
     <header class="home-head">

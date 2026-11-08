@@ -10,7 +10,7 @@ const items = tocItems(Astro.props.headings);
 ---
 
 {items.length > 1 && (
-  <nav class="toc" aria-labelledby="toc-title">
+  <nav class="toc" aria-labelledby="toc-title" data-toc>
     <h2 id="toc-title" class="widget-title">
       {t.toc}
     </h2>
@@ -23,3 +23,10 @@ const items = tocItems(Astro.props.headings);
     </ol>
   </nav>
 )}
+
+<script>
+  import { initScrollspy } from "../scripts/scrollspy.ts";
+
+  const toc = document.querySelector<HTMLElement>("[data-toc]");
+  if (toc) initScrollspy(toc);
+</script>
