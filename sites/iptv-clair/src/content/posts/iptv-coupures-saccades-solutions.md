@@ -2,7 +2,7 @@
 title: "Télé par Internet qui saccade : causes et solutions"
 description: "Image qui se fige, son décalé, qualité qui baisse : les causes des coupures de la télé par Internet et les solutions à tester, du Wi-Fi au câble Ethernet."
 pubDate: 2026-10-30
-category: qualite
+category: installation
 tags: ["wi-fi", "débit", "dépannage"]
 cover: ./covers/iptv-coupures-saccades-solutions.jpg
 coverAlt: "Bandes diagonales vertes évoquant un flux de données réseau"
