@@ -3,7 +3,7 @@
   "framework": "astro",
   "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
   "buildCommand": "cd ../.. && pnpm turbo run build --filter=@sites/iptv-clair",
-  "outputDirectory": "dist",
+  "outputDirectory": "sites/iptv-clair/dist",
   "trailingSlash": true,
   "headers": [
     {

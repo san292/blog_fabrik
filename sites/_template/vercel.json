@@ -3,7 +3,7 @@
   "framework": "astro",
   "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
   "buildCommand": "cd ../.. && pnpm turbo run build --filter=@sites/__SITE_SLUG__",
-  "outputDirectory": "dist",
+  "outputDirectory": "sites/__SITE_SLUG__/dist",
   "trailingSlash": true,
   "headers": [
     {
