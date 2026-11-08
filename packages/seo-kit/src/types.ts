@@ -48,6 +48,8 @@ export interface PageMetaInput {
   readonly publishedTime?: Date;
   readonly modifiedTime?: Date;
   readonly authorName?: string;
+  /** Handle Twitter de l'auteur (ex. @alaindo) pour twitter:creator sur les articles. */
+  readonly authorTwitter?: string;
   readonly section?: string;
   readonly tags?: readonly string[];
   readonly prevPath?: string;

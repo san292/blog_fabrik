@@ -26,6 +26,7 @@ interface Props {
   published?: Date;
   modified?: Date | undefined;
   authorName?: string;
+  authorTwitter?: string | undefined;
   section?: string;
   tags?: readonly string[];
   prevPath?: string | undefined;
@@ -46,6 +47,7 @@ const {
   published,
   modified,
   authorName,
+  authorTwitter,
   section,
   tags,
   prevPath,
@@ -67,6 +69,7 @@ const meta = buildPageMeta({
   ...(published ? { publishedTime: published } : {}),
   ...(modified ? { modifiedTime: modified } : {}),
   ...(authorName ? { authorName } : {}),
+  ...(authorTwitter ? { authorTwitter } : {}),
   ...(section ? { section } : {}),
   ...(tags ? { tags } : {}),
   ...(prevPath ? { prevPath } : {}),
@@ -80,7 +83,11 @@ const publisher = {
   ...(config.publisher.logo ? { logo: config.publisher.logo } : {}),
 };
 const graph = serializeJsonLd(
-  ldGraph(websiteLd(seoSite, config.description), publisherLd(seoSite, publisher), ...jsonLd),
+  ldGraph(
+    websiteLd(seoSite, config.description, urls.search()),
+    publisherLd(seoSite, publisher),
+    ...jsonLd,
+  ),
 );
 
 const { accent, accentDark = accent } = config.theme;
@@ -112,7 +119,8 @@ const showSidebar = !fullWidth && config.layout.sidebar !== "none";
     <link rel="alternate" type="application/rss+xml" title={config.name} href={urls.rss()} />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content={accent} />
+    <meta name="theme-color" content={accent} media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content={accentDark} media="(prefers-color-scheme: dark)" />
     <script is:inline>
       try {
         const saved = localStorage.getItem("theme");
@@ -141,5 +149,16 @@ const showSidebar = !fullWidth && config.layout.sidebar !== "none";
       {showSidebar && <Sidebar />}
     </div>
     <Footer />
+    <button type="button" class="to-top" data-back-to-top data-visible="false" aria-label={t.backToTop}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <script>
+      import { initBackToTop } from "../scripts/back-to-top.ts";
+
+      const button = document.querySelector<HTMLButtonElement>("[data-back-to-top]");
+      if (button) initBackToTop(button);
+    </script>
   </body>
 </html>

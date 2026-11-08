@@ -28,22 +28,28 @@ export default defineSiteConfig({
         "Ce qu'est l'IPTV, comment la télévision passe par Internet et ce qui la distingue de la TNT, du satellite et du streaming.",
     },
     {
-      slug: "offres-legales",
-      label: "Offres légales",
-      description:
-        "Box des opérateurs, applications gratuites des chaînes, Molotov et services payants : toutes les façons légales de regarder la télé.",
-    },
-    {
       slug: "equipement",
       label: "Équipement",
       description:
         "Smart TV, boîtiers Android TV, Apple TV, Fire TV ou box opérateur : quel appareil choisir pour regarder la télé par Internet.",
     },
     {
-      slug: "qualite",
-      label: "Qualité et réseau",
+      slug: "installation",
+      label: "Installation",
       description:
-        "Débit, Wi-Fi, câble Ethernet, latence : diagnostiquer et corriger les coupures et saccades de la télévision par Internet.",
+        "Brancher et configurer sa télévision par Internet : box opérateur, boîtier, application, débit et Wi-Fi pour une image stable.",
+    },
+    {
+      slug: "depannage",
+      label: "Dépannage",
+      description:
+        "Image qui gèle, son décalé, chaîne qui ne charge pas : repérer la panne et la corriger, du décodeur jusqu'à la box.",
+    },
+    {
+      slug: "offres-legales",
+      label: "Offres légales",
+      description:
+        "Box des opérateurs, applications gratuites des chaînes, Molotov et services payants : toutes les façons légales de regarder la télé.",
     },
     {
       slug: "legalite",
@@ -54,10 +60,9 @@ export default defineSiteConfig({
   ],
   nav: [
     { label: "Accueil", href: "/" },
-    { label: "Comprendre", href: "/categorie/comprendre/" },
-    { label: "Offres légales", href: "/categorie/offres-legales/" },
-    { label: "Équipement", href: "/categorie/equipement/" },
-    { label: "Légalité", href: "/categorie/legalite/" },
+    { label: "Installation", href: "/categorie/installation/" },
+    { label: "Contact", href: "/contact/" },
+    { label: "À propos", href: "/a-propos/" },
   ],
   theme: {
     accent: "#0e7c66",

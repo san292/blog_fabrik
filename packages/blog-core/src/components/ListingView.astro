@@ -1,5 +1,5 @@
 ---
-import { breadcrumbLd, type BreadcrumbItem } from "@blog-factory/seo-kit";
+import { breadcrumbLd, collectionPageLd, type BreadcrumbItem } from "@blog-factory/seo-kit";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "./Breadcrumbs.astro";
 import Pagination from "./Pagination.astro";
@@ -40,7 +40,10 @@ const title = current > 1 ? `${heading} – ${t.page} ${current}` : heading;
   noindex={noindex}
   prevPath={listing.pagination.prevPath}
   nextPath={listing.pagination.nextPath}
-  jsonLd={[breadcrumbLd(crumbs, seoSite)]}
+  jsonLd={[
+    breadcrumbLd(crumbs, seoSite),
+    collectionPageLd({ site: seoSite, path, name: heading, description }),
+  ]}
 >
   <Breadcrumbs items={crumbs} />
   <header class="page-head">

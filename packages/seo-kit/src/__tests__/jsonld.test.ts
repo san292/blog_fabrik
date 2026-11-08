@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { blogPostingLd, breadcrumbLd, ldGraph, personLd, serializeJsonLd } from "../jsonld.ts";
+import {
+  blogPostingLd,
+  breadcrumbLd,
+  collectionPageLd,
+  ldGraph,
+  personLd,
+  serializeJsonLd,
+  websiteLd,
+} from "../jsonld.ts";
 import type { SeoAuthor, SeoSite } from "../types.ts";
 
 const site: SeoSite = {
@@ -23,7 +31,7 @@ describe("blogPostingLd", () => {
   });
 
   it("référence l'auteur et l'éditeur par @id", () => {
-    expect(ld["author"]).toEqual({ "@id": "https://carnet-front.fr/auteur/alin-do/#person" });
+    expect(ld["author"]).toEqual({ "@id": "https://carnet-front.fr/auteur/alain-do/#person" });
     expect(ld["publisher"]).toEqual({ "@id": "https://carnet-front.fr/#publisher" });
   });
 
@@ -54,6 +62,52 @@ describe("breadcrumbLd", () => {
         item: "https://carnet-front.fr/categorie/react/",
       },
     ]);
+  });
+});
+
+describe("websiteLd", () => {
+  it("n'ajoute pas de SearchAction sans chemin de recherche", () => {
+    const ld = websiteLd(site, "Desc");
+    expect(ld).not.toHaveProperty("potentialAction");
+  });
+
+  it("déclare un SearchAction quand un chemin de recherche est fourni", () => {
+    const ld = websiteLd(site, "Desc", "/recherche/");
+    expect(ld["potentialAction"]).toEqual({
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://carnet-front.fr/recherche/?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    });
+  });
+});
+
+describe("collectionPageLd", () => {
+  it("construit une CollectionPage reliée au site", () => {
+    const ld = collectionPageLd({
+      site,
+      path: "/categorie/react/",
+      name: "React",
+      description: "Articles React",
+    });
+    expect(ld["@type"]).toBe("CollectionPage");
+    expect(ld["@id"]).toBe("https://carnet-front.fr/categorie/react/");
+    expect(ld["name"]).toBe("React");
+    expect(ld["isPartOf"]).toEqual({ "@id": "https://carnet-front.fr/#website" });
+    expect(ld["inLanguage"]).toBe("fr");
+  });
+
+  it("devient un Blog quand on le précise", () => {
+    const ld = collectionPageLd({
+      site,
+      path: "/",
+      name: "Guide numérique",
+      description: "Desc",
+      type: "Blog",
+    });
+    expect(ld["@type"]).toBe("Blog");
   });
 });
 

@@ -20,6 +20,11 @@ const author = z.object({
   bio: z.string().min(80, { message: "Bio auteur trop courte (80 caractères minimum)." }),
   /** Profils publics (LinkedIn, GitHub…) pour le JSON-LD sameAs. */
   sameAs: z.array(z.url()).default([]),
+  /** Handle Twitter/X de l'auteur (ex. @alaindo) pour twitter:creator. */
+  twitter: z
+    .string()
+    .regex(/^@[A-Za-z0-9_]{1,15}$/, { message: "Handle Twitter invalide (ex. @alaindo)." })
+    .optional(),
 });
 
 const category = z.object({
