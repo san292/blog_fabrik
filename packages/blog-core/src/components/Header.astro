@@ -1,4 +1,6 @@
 ---
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { config, urls } from "../lib/site.ts";
 import { t } from "../lib/i18n.ts";
 
@@ -7,6 +9,18 @@ interface Props {
 }
 
 const { path } = Astro.props;
+
+// Logo SVG : on l'inline (plutôt qu'un <img>) pour qu'il hérite du thème
+// clair/sombre de la page (data-theme), sinon les contours sombres
+// disparaîtraient en mode sombre. Les autres formats restent en <img>.
+let inlineLogo: string | undefined;
+if (config.logo && config.logo.endsWith(".svg")) {
+  try {
+    inlineLogo = await readFile(join(process.cwd(), "public", config.logo), "utf8");
+  } catch {
+    inlineLogo = undefined;
+  }
+}
 
 const links =
   config.nav.length > 0
@@ -28,7 +42,9 @@ const items = links.map((link) => ({
   <div class="wrap hdr">
     <a class="logo" href="/" aria-label={`${config.name}, ${t.home.toLowerCase()}`}>
       {
-        config.logo ? (
+        inlineLogo ? (
+          <span class="logo-img logo-inline" set:html={inlineLogo} />
+        ) : config.logo ? (
           <img class="logo-img" src={config.logo} alt={config.name} />
         ) : (
           <>

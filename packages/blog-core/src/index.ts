@@ -117,7 +117,16 @@ export default function blogCore(input: SiteConfigInput): AstroIntegration {
       "astro:server:setup": ({ server }) => {
         server.middlewares.use((req, res, next) => {
           if (req.url && req.url.includes("/_image")) {
-            res.setHeader("Cache-Control", "no-store, must-revalidate");
+            // Astro pose un Cache-Control d'un an sur /_image. On intercepte
+            // setHeader pour le forcer à no-store, sinon Chrome garde l'ancienne
+            // image après un remplacement (même nom de fichier → même URL).
+            const original = res.setHeader.bind(res);
+            res.setHeader = (name: string, value: string | number | readonly string[]) => {
+              if (String(name).toLowerCase() === "cache-control") {
+                return original("Cache-Control", "no-store, must-revalidate");
+              }
+              return original(name, value);
+            };
           }
           next();
         });

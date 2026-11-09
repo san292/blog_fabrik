@@ -6,6 +6,15 @@ category: installation
 tags: ["wi-fi", "débit", "dépannage"]
 cover: ./covers/iptv-coupures-saccades-solutions.jpg
 coverAlt: "Écran de télévision, carte électronique et marteau sur fond sombre"
+faq:
+  - question: "Pourquoi mon IPTV coupe ou saccade, surtout le soir ?"
+    answer: "Trois causes reviennent presque toujours. Le Wi-Fi 2,4 GHz saturé par les voisins et les appareils de la maison : basculez sur le 5 GHz ou, mieux, sur un câble Ethernet. Les heures de pointe, entre 20h et 23h, où tout le quartier regarde la télé en même temps et où votre débit réel chute. Et, côté services pirates, des serveurs surchargés qui lâchent pendant les grands matchs. Le Wi-Fi et la connexion expliquent la grande majorité des saccades, pas votre téléviseur."
+  - question: "Faut-il brancher un câble Ethernet pour éviter les coupures ?"
+    answer: "C'est la solution la plus efficace. Un câble Ethernet entre la box et l'appareil supprime les interférences et les baisses de débit du Wi-Fi. Si vous ne pouvez pas tirer de câble, un kit CPL qui fait passer le réseau par les prises électriques est un bon compromis."
+  - question: "Quel débit faut-il pour une image stable ?"
+    answer: "Visez au moins 10 Mb/s par flux en haute définition et 25 Mb/s en 4K, mesurés au moment où vous regardez la télé. Testez votre débit réel plutôt que celui promis par l'offre : c'est souvent là que se cache la cause des saccades."
+  - question: "Les coupures peuvent-elles venir de mon abonnement et non de ma connexion ?"
+    answer: "Oui, surtout avec les services pirates. Leurs serveurs sont surchargés et se font bloquer, ce qui provoque des saccades que rien ne corrige chez vous, en particulier pendant les grands matchs. Avec une offre légale bien dimensionnée, ce type de coupure n'existe pas."
 ---
 L'image se fige en plein match, la qualité chute d'un coup, le son se décale : avec la télévision par Internet, la plupart de ces problèmes viennent du réseau de la maison, pas du service. Voici comment trouver la cause et la corriger, de la plus fréquente à la plus rare.
 

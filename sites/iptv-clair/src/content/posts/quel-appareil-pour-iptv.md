@@ -6,6 +6,13 @@ category: equipement
 tags: ["smart tv", "android tv", "apple tv"]
 cover: ./covers/quel-appareil-pour-iptv.jpg
 coverAlt: "Plusieurs appareils diffusant la télévision par Internet dans un salon"
+faq:
+  - question: "Ai-je besoin d'un boîtier si j'ai déjà une Smart TV ?"
+    answer: "Pas forcément. Si votre Smart TV est récente et fait tourner les applications dont vous avez besoin sans ralentir, elle suffit. Un boîtier externe devient utile quand le téléviseur rame, ne reçoit plus de mises à jour, ou qu'une application que vous voulez n'est pas disponible dans son magasin."
+  - question: "Quel appareil choisir pour regarder la télé par Internet ?"
+    answer: "Si votre téléviseur est une Smart TV récente sous Tizen (Samsung), webOS (LG) ou Google TV, il gère déjà l'essentiel sans rien ajouter. Sinon, un boîtier certifié Google TV ou Android TV comme la NVIDIA Shield donne accès au plus large catalogue d'applications. Une clé Fire TV dépanne très bien pour un petit budget, et l'Apple TV 4K reste la plus fluide si vous y mettez le prix. Évitez les boîtiers sans marque vendus préconfigurés : ils tournent souvent sous un Android non certifié, sans mises à jour de sécurité."
+  - question: "Le décodeur de ma box suffit-il ?"
+    answer: "Pour regarder les chaînes incluses dans votre abonnement, oui, c'est souvent la solution la plus simple et sans surcoût. Ses limites apparaissent si vous voulez des applications que l'opérateur ne propose pas ou une interface plus moderne : un boîtier dédié prend alors le relais."
 ---
 Pour regarder la télévision par Internet, l'appareil compte autant que l'abonnement. Un boîtier lent rend l'expérience pénible, une Smart TV trop ancienne n'aura plus les applications à jour. Voici comment choisir, selon votre usage et votre budget.
 

@@ -9,7 +9,7 @@ export default defineSiteConfig({
   lang: "fr",
   locale: "fr_FR",
   logoMark: "TV",
-  logo: "/logo.png",
+  logo: "/logo.svg",
   publisher: { name: "Télé Claire" },
   authors: [
     {

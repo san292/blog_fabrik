@@ -6,6 +6,17 @@ category: offres-legales
 tags: ["offres légales", "molotov", "applications"]
 cover: ./covers/regarder-tv-legalement-iptv.jpg
 coverAlt: "Salon avec une télévision diffusant plusieurs chaînes par Internet"
+faq:
+  - question: "Peut-on vraiment regarder la télé gratuitement et légalement ?"
+    answer: "Oui, et plus que ce qu'on imagine. La télé de votre box, les applications gratuites des chaînes (France.tv, TF1+, M6+, ARTE.tv), Molotov et les chaînes FAST donnent accès à des centaines de programmes sans rien payer et en toute légalité. Seuls le sport premium, le cinéma récent et certaines séries restent payants."
+  - question: "Combien coûte une IPTV légale ?"
+    answer: "Une grande partie des offres ne coûte rien : la télé de votre box, les applications des chaînes, Molotov et les chaînes FAST sont gratuites. Seuls le sport, le cinéma récent et certaines séries passent par des services payants, en général sans engagement. Retenez surtout un repère : une offre à quelques euros qui promet des milliers de chaînes et tout le sport est toujours un service pirate, jamais une offre légale."
+  - question: "Faut-il un abonnement pour accéder aux chaînes FAST ?"
+    answer: "Non. Les chaînes FAST (Free Ad-Supported Streaming Television) sont entièrement gratuites, financées par la publicité. On y accède via des applications comme Pluto TV, Rakuten TV ou Samsung TV Plus, sans compte ni carte bancaire. En échange, vous regardez quelques coupures publicitaires, comme à la télé classique."
+  - question: "Comment regarder le sport légalement sans se ruiner ?"
+    answer: "Le sport premium passe par des services payants (DAZN, les offres des opérateurs, beIN). Pour limiter la facture, ciblez un seul service selon le championnat qui vous intéresse, profitez des offres sans engagement mois par mois, et vérifiez ce que votre box inclut déjà avant de souscrire."
+  - question: "Quelle combinaison d'offres choisir ?"
+    answer: "Pour la plupart des foyers, la base gratuite (box, applis des chaînes, Molotov, FAST) couvre l'essentiel. Ajoutez un seul service payant ciblé si vous tenez à un sport ou à un catalogue cinéma précis. Inutile de cumuler les abonnements : commencez gratuit, puis complétez selon vos vrais besoins."
 ---
 Bonne nouvelle : en France, on peut regarder la quasi-totalité des chaînes gratuites par Internet, légalement et sans payer un centime. Pour le sport et le cinéma, il faut en revanche passer par des services payants. Voici toutes les options, de la plus simple à la plus complète.
 

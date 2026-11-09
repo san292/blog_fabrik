@@ -142,6 +142,22 @@ export const blogPostingLd = (input: BlogPostingInput): JsonObject => {
   });
 };
 
+export interface FaqItem {
+  readonly question: string;
+  readonly answer: string;
+}
+
+/** Nœud FAQPage pour les rich snippets Google (questions/réponses d'un article). */
+export const faqPageLd = (items: readonly FaqItem[], url: string, site: SeoSite): JsonObject => ({
+  "@type": "FAQPage",
+  "@id": `${absoluteUrl(url, site.url)}#faq`,
+  mainEntity: items.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+});
+
 /** Regroupe plusieurs nœuds dans un seul graphe JSON-LD. */
 export const ldGraph = (...nodes: readonly JsonObject[]): JsonObject => ({
   "@context": CONTEXT,

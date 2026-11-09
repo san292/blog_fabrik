@@ -1,30 +1,79 @@
 ---
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { getPages } from "../lib/posts.ts";
 import { config, urls } from "../lib/site.ts";
 import { t } from "../lib/i18n.ts";
 
+let inlineLogo: string | undefined;
+if (config.logo && config.logo.endsWith(".svg")) {
+  try {
+    inlineLogo = await readFile(join(process.cwd(), "public", config.logo), "utf8");
+  } catch {
+    inlineLogo = undefined;
+  }
+}
+
 const pages = (await getPages()).filter((p) => p.data.footer);
-const links = [
+const pageLinks = [
   ...config.footerLinks,
   ...pages.map((p) => ({ label: p.data.title, href: urls.post(p.id) })),
   { label: "RSS", href: urls.rss() },
 ];
+const categories = config.categories.slice(0, 6);
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <div class="wrap ftr">
-    <span>
-      © {year} {config.publisher.name}. {t.rights}
-    </span>
-    <nav aria-label={t.footerNav}>
+  <div class="wrap ftr-grid">
+    <div class="ftr-brand">
+      <a href="/" class="ftr-logo" aria-label={`${config.name}, ${t.home.toLowerCase()}`}>
+        {
+          inlineLogo ? (
+            <span class="ftr-logo-img logo-inline" set:html={inlineLogo} />
+          ) : config.logo ? (
+            <img class="ftr-logo-img" src={config.logo} alt={config.name} />
+          ) : (
+            <>
+              <span class="logo-mark" aria-hidden="true">
+                {config.logoMark}
+              </span>
+              <span>{config.name}</span>
+            </>
+          )
+        }
+      </a>
+      <p>{config.tagline}</p>
+    </div>
+
+    <nav class="ftr-col" aria-label={t.categories}>
+      <h2 class="ftr-title">{t.categories}</h2>
       <ul>
-        {links.map((link) => (
-          <li>
-            <a href={link.href}>{link.label}</a>
-          </li>
-        ))}
+        {
+          categories.map((c) => (
+            <li>
+              <a href={urls.category(c.slug)}>{c.label}</a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
+
+    <nav class="ftr-col" aria-label={t.footerNav}>
+      <h2 class="ftr-title">{config.name}</h2>
+      <ul>
+        {
+          pageLinks.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <div class="wrap ftr-bottom">
+    <span>© {year} {config.publisher.name}. {t.rights}</span>
   </div>
 </footer>

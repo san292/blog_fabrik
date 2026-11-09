@@ -6,6 +6,15 @@ category: comprendre
 tags: ["iptv", "tnt", "streaming"]
 cover: ./covers/iptv-definition-fonctionnement.jpg
 coverAlt: "Box et écran de télévision illustrant le trajet du signal IPTV"
+faq:
+  - question: "L'IPTV est-elle légale ?"
+    answer: "Oui, dans sa très grande majorité. La télé de votre box opérateur, Molotov ou les applications des chaînes sont de l'IPTV parfaitement légale. Ce qui est illégal, ce sont les abonnements pirates qui revendent des chaînes payantes sans autorisation. La technologie n'a rien d'interdit, c'est l'usage qui peut l'être."
+  - question: "Quelle est la différence entre l'IPTV et la TNT ?"
+    answer: "La TNT passe par les ondes hertziennes captées avec une antenne râteau, sans Internet. L'IPTV, elle, transmet les chaînes par votre connexion Internet. L'IPTV offre plus de chaînes, le replay et une image souvent meilleure, mais dépend de la qualité de votre débit, là où la TNT fonctionne même sans connexion."
+  - question: "Faut-il une connexion très rapide pour l'IPTV ?"
+    answer: "Pas forcément. Comptez environ 10 Mb/s pour de la haute définition et 25 Mb/s pour de la 4K sur un flux. La stabilité compte autant que la vitesse : une connexion régulière à 15 Mb/s donne une meilleure image qu'une connexion à 50 Mb/s qui fluctue."
+  - question: "L'IPTV et le streaming, est-ce la même chose ?"
+    answer: "C'est très proche techniquement, mais l'usage diffère. L'IPTV diffuse des chaînes en direct, comme la télé classique, avec une grille de programmes. Le streaming à la demande (Netflix, Disney+) vous laisse choisir quoi regarder quand vous voulez. Beaucoup de services mélangent aujourd'hui les deux."
 ---
 Le mot IPTV revient partout : dans les offres des box, sur les forums, dans les articles sur le piratage. Pourtant, il désigne d'abord une technique tout à fait banale. Si vous regardez la télé avec la box de votre opérateur, vous utilisez probablement déjà l'IPTV sans le savoir.
 

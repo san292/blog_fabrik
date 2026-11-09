@@ -34,6 +34,15 @@ export const postSchema = ({ image }: SchemaContext) =>
     noindex: z.boolean().default(false),
     /** URL canonique externe si l'article est republié ailleurs en premier. */
     canonical: z.url().optional(),
+    /** Questions/réponses affichées en fin d'article et exposées en JSON-LD FAQPage. */
+    faq: z
+      .array(
+        z.object({
+          question: z.string().min(8),
+          answer: z.string().min(20),
+        }),
+      )
+      .optional(),
   });
 
 export const pageSchema = z.object({

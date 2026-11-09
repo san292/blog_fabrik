@@ -6,6 +6,15 @@ category: legalite
 tags: ["arcom", "piratage", "sanctions"]
 cover: ./covers/iptv-illegale-risques-sanctions.jpg
 coverAlt: "Boîtier IPTV et télécommande devant un panneau d'interdiction rouge"
+faq:
+  - question: "Un simple abonné à une IPTV illégale risque-t-il vraiment une amende ?"
+    answer: "Oui, et ce n'est plus théorique. En mars 2026, le parquet d'Arras a fait condamner 19 abonnés à des amendes de 300 à 400 euros, via une composition pénale, avec inscription au casier judiciaire. Les enquêteurs avaient remonté le fichier clients de deux revendeurs. Chez nos voisins, l'Italie sanctionne déjà massivement les abonnés, avec des amendes qui grimpent jusqu'à 5 000 euros en cas de récidive."
+  - question: "Comment reconnaître une offre IPTV illégale ?"
+    answer: "Quelques signaux ne trompent pas : un prix dérisoire pour des milliers de chaînes et tous les bouquets sport, un paiement par virement, PayPal entre particuliers ou cryptomonnaie, aucune mention légale, et une vente par Telegram ou sur des forums. Une offre légale a toujours un éditeur identifiable et des conditions claires."
+  - question: "Que faire si j'ai déjà un abonnement pirate ?"
+    answer: "Arrêtez de l'utiliser et de le renouveler. Changez les mots de passe que vous auriez pu réutiliser, surveillez vos comptes bancaires si vous avez payé par carte, et désinstallez les applications douteuses. Tournez-vous ensuite vers les nombreuses offres légales, souvent gratuites, pour vous mettre en règle."
+  - question: "Les IPTV pirates sont-elles dangereuses au-delà de l'aspect légal ?"
+    answer: "Oui. Les applications et boîtiers non officiels embarquent parfois des logiciels malveillants, vos données de paiement transitent par des sites non sécurisés, et le service peut disparaître du jour au lendemain avec votre argent. Les coupures en plein match sont aussi fréquentes à cause des blocages."
 ---
 Des milliers de chaînes et tous les matchs pour quelques euros par mois : les abonnements IPTV pirates attirent de plus en plus de monde. Selon l'Arcom, 11 % des internautes français déclarent y avoir recours, et les deux tiers ont commencé il y a moins de trois ans. Mais la situation a beaucoup changé en 2026 : premières amendes pour des abonnés, nouvelle loi et blocages en plein match. Voici ce que vous risquez réellement.
 

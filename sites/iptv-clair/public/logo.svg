@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 150" role="img" aria-label="Télé Claire">
+  <style>
+    .ink { fill: #0f1b2d; }
+    .ink-stroke { stroke: #0f1b2d; }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #f3f5f8; }
+      .ink-stroke { stroke: #f3f5f8; }
+    }
+    :root[data-theme="dark"] .ink { fill: #f3f5f8; }
+    :root[data-theme="dark"] .ink-stroke { stroke: #f3f5f8; }
+    :root[data-theme="light"] .ink { fill: #0f1b2d; }
+    :root[data-theme="light"] .ink-stroke { stroke: #0f1b2d; }
+  </style>
+  <!-- Icône : poste de télévision -->
+  <g class="ink-stroke" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Antennes -->
+    <path d="M60 46 L96 16" />
+    <path d="M132 46 L96 16" />
+    <!-- Corps de la TV -->
+    <rect x="26" y="46" width="140" height="92" rx="16" />
+    <!-- Pieds -->
+    <path d="M58 138 L58 146" />
+    <path d="M134 138 L134 146" />
+  </g>
+  <!-- Bouton play vert -->
+  <path d="M74 70 L74 114 L112 92 Z" fill="#17a34a" />
+  <!-- Ondes vertes -->
+  <g fill="none" stroke="#17a34a" stroke-width="9" stroke-linecap="round">
+    <path d="M122 80 L140 70" />
+    <path d="M124 92 L146 92" />
+    <path d="M122 104 L140 114" />
+  </g>
+  <!-- Texte -->
+  <g font-family="'Bricolage Grotesque', system-ui, sans-serif" font-weight="800" font-size="76" letter-spacing="-2">
+    <text class="ink" x="196" y="116">Télé</text>
+    <text x="356" y="116" fill="#17a34a">Claire</text>
+  </g>
+</svg>
