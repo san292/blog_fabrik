@@ -85,7 +85,7 @@ Nous expliquons pourquoi ces offres sont risquées dans notre article sur [l'IPT
 
 ## Le matériel et la connexion
 
-Toutes ces offres demandent un appareil compatible et une connexion correcte. Pour choisir l'écran ou le boîtier, consultez notre [guide des appareils pour l'IPTV](/quel-appareil-pour-iptv/). Si l'image saccade, notre [guide des coupures et saccades](/iptv-coupures-saccades-solutions/) passe en revue les causes les plus fréquentes.
+Toutes ces offres demandent un appareil compatible et une connexion correcte. Une Smart TV récente, un boîtier Android TV ou le décodeur de votre box suffisent dans la plupart des cas, à condition d'avoir un débit stable pour éviter les coupures.
 
 ## Sources
 

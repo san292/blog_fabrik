@@ -78,7 +78,7 @@ Le boîtier ou l'application que vous installez a accès à votre réseau domest
 ## Que faire si vous avez un abonnement pirate ?
 
 1. **Arrêtez de l'utiliser** et désinstallez les applications non officielles.
-2. **Réinitialisez le boîtier** s'il a été acheté préconfiguré, ou remplacez-le par un appareil certifié. Notre [guide des appareils](/quel-appareil-pour-iptv/) vous aide à choisir.
+2. **Réinitialisez le boîtier** s'il a été acheté préconfiguré, ou remplacez-le par un appareil certifié Google TV ou Android TV, avec le magasin d'applications officiel.
 3. **Surveillez votre compte bancaire** et faites opposition à la carte en cas de prélèvement suspect.
 4. **Changez vos mots de passe** si vous avez réutilisé ceux de comptes importants.
 5. **Passez à une offre légale** : pour beaucoup d'usages, les applications gratuites des chaînes suffisent.

@@ -69,9 +69,9 @@ C'est une confusion à éviter : la technologie IPTV est légale et utilisée pa
 Trois éléments suffisent :
 
 1. **Une connexion Internet** : la fibre est idéale, mais un bon ADSL ou VDSL permet déjà la HD sur un écran.
-2. **Un appareil compatible** : box opérateur, Smart TV, boîtier Android TV, Apple TV ou Fire TV. Notre [guide des appareils](/quel-appareil-pour-iptv/) vous aide à choisir.
+2. **Un appareil compatible** : box opérateur, Smart TV, boîtier Android TV, Apple TV ou Fire TV. Sur ordinateur, un [lecteur IPTV pour Windows](/lecteurs-iptv-windows/) fait très bien l'affaire.
 3. **Une source légale** : l'offre TV de votre box, les applications gratuites des chaînes ou un service payant. Elles sont toutes recensées dans notre [guide des offres légales](/regarder-tv-legalement-iptv/).
 
 ## En résumé
 
-L'IPTV n'est ni une marque ni un service : c'est la télévision transportée par Internet. Celle de votre box est gérée par votre opérateur et très stable ; celle des applications passe par l'Internet ouvert et vous suit sur tous vos écrans. Dans les deux cas, la qualité dépend en partie de votre réseau domestique, un sujet que nous traitons dans [notre article sur les coupures et saccades](/iptv-coupures-saccades-solutions/).
+L'IPTV n'est ni une marque ni un service : c'est la télévision transportée par Internet. Celle de votre box est gérée par votre opérateur et très stable ; celle des applications passe par l'Internet ouvert et vous suit sur tous vos écrans. Dans les deux cas, la qualité dépend en partie de votre réseau domestique : un débit stable et, si possible, une connexion filaire évitent les coupures.

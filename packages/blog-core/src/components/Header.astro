@@ -91,8 +91,9 @@ const items = links.map((link) => ({
           </ul>
         </nav>
       </div>
-      <a class="icon-btn" href={urls.search()} aria-label={t.search}>
+      <form class="hdr-search" role="search" action={urls.search()} method="get">
         <svg
+          class="hdr-search-icon"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -103,7 +104,8 @@ const items = links.map((link) => ({
           <circle cx="11" cy="11" r="7"></circle>
           <path d="M20 20l-3.5-3.5"></path>
         </svg>
-      </a>
+        <input type="search" name="q" placeholder={t.searchPlaceholder} aria-label={t.search} />
+      </form>
       <button
         type="button"
         class="icon-btn"

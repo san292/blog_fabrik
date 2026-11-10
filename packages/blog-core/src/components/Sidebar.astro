@@ -50,10 +50,10 @@ const categories = config.categories.map((c) => ({
           <a href={p.url}>
             <Image
               class="thumb"
-              src={p.entry.data.cover}
+              src={p.entry.data.thumbnail ?? p.entry.data.cover}
               alt=""
-              width={128}
-              height={128}
+              width={240}
+              height={135}
               fit="cover"
               loading="lazy"
             />
