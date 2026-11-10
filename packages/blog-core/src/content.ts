@@ -30,10 +30,21 @@ export const postSchema = ({ image }: SchemaContext) =>
     coverAlt: z
       .string()
       .min(10, { message: "Texte alternatif de la cover obligatoire (10 caractères min)." }),
+    /** Miniature carrée/16:9 dédiée aux vignettes (sidebar « Récents »). Défaut : la cover. */
+    thumbnail: image().optional(),
     draft: z.boolean().default(false),
     noindex: z.boolean().default(false),
     /** URL canonique externe si l'article est republié ailleurs en premier. */
     canonical: z.url().optional(),
+    /** Questions/réponses affichées en fin d'article et exposées en JSON-LD FAQPage. */
+    faq: z
+      .array(
+        z.object({
+          question: z.string().min(8),
+          answer: z.string().min(20),
+        }),
+      )
+      .optional(),
   });
 
 export const pageSchema = z.object({

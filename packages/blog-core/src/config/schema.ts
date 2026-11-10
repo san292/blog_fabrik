@@ -43,6 +43,8 @@ export const siteConfigSchema = z.object({
   locale: z.string().default("fr_FR"),
   /** 1 à 4 caractères affichés dans le logo carré. */
   logoMark: z.string().min(1).max(4).default("•"),
+  /** Chemin d'une image de logo (ex. "/logo.png"). Si défini, remplace le logo carré + le nom texte dans le header. */
+  logo: z.string().optional(),
   twitterHandle: z
     .string()
     .regex(/^@\w+$/)

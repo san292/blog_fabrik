@@ -1,7 +1,13 @@
 ---
 import { Image, getImage } from "astro:assets";
 import { render } from "astro:content";
-import { blogPostingLd, breadcrumbLd, countWords, personLd } from "@blog-factory/seo-kit";
+import {
+  blogPostingLd,
+  breadcrumbLd,
+  countWords,
+  faqPageLd,
+  personLd,
+} from "@blog-factory/seo-kit";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AuthorBox from "./AuthorBox.astro";
 import Avatar from "./Avatar.astro";
@@ -58,6 +64,9 @@ const jsonLd = [
   }),
   personLd(seoAuthor(author), seoSite),
   breadcrumbLd(crumbs, seoSite),
+  ...(entry.data.faq && entry.data.faq.length > 0
+    ? [faqPageLd(entry.data.faq, post.url, seoSite)]
+    : []),
 ];
 ---
 
@@ -121,6 +130,19 @@ const jsonLd = [
     <div class="article-grid">
       <div class="prose" data-pagefind-body>
         <Content />
+        {entry.data.faq && entry.data.faq.length > 0 && (
+          <section class="faq" aria-labelledby="faq-title">
+            <h2 id="faq-title">{t.faqTitle}</h2>
+            <dl>
+              {entry.data.faq.map((item) => (
+                <div class="faq-item">
+                  <dt>{item.question}</dt>
+                  <dd>{item.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
         {post.tags.length > 0 && (
           <ul class="tags" data-pagefind-ignore>
             {post.tags.map((tag) => (

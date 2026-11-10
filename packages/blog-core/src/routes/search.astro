@@ -32,7 +32,18 @@ const labels = {
 
 <style>
   .search-wrap {
-    max-width: 720px;
+    max-width: 920px;
+  }
+  .search-wrap :global(.search-form) {
+    border-width: 2px;
+  }
+  .search-wrap :global(.search-form input) {
+    padding: 16px 20px;
+    font-size: 18px;
+  }
+  .search-wrap :global(.search-form button) {
+    padding: 0 24px;
+    font-size: 16px;
   }
   .search-wrap :global(.search-status) {
     color: var(--muted);

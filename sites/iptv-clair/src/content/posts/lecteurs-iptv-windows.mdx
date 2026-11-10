@@ -1,0 +1,207 @@
+---
+title: "Lecteur IPTV Windows : comparatif et installation"
+description: "Quel lecteur IPTV Windows choisir ? Comparez IPTVnator, VLC, Kodi, Smarters Pro et Player Zero : M3U, Xtream, EPG, prix et configuration."
+pubDate: 2026-11-10
+updatedDate: 2026-11-10
+category: equipement
+tags: ["iptv windows", "m3u", "xtream codes"]
+cover: ./covers/lecteurs-iptv-windows.webp
+coverAlt: "Ordinateur portable sous Windows comparant VLC, un lecteur IPTV et Jellyfin"
+thumbnail: ./covers/lecteurs-iptv-windows-thumb.webp
+faq:
+  - question: "Quel lecteur IPTV Windows est entièrement gratuit ?"
+    answer: "VLC, IPTVnator et Kodi sont gratuits et open source. Les sources TV restent à fournir séparément. L'essai PRO de Player Zero dure 72 heures ; il ne correspond pas à une gratuité complète permanente."
+  - question: "Un lecteur IPTV fournit-il les chaînes ?"
+    answer: "Non. Les logiciels présentés lisent vos propres sources et ne constituent pas un abonnement TV. Il faut disposer des accès et des autorisations nécessaires pour les contenus consultés."
+  - question: "Peut-on utiliser VLC pour regarder l'IPTV sur PC ?"
+    answer: "Oui, avec une playlist M3U ou un flux compatible. VLC convient à la lecture et aux vérifications ponctuelles, mais son interface n'offre pas le même parcours qu'une application dédiée au guide TV."
+  - question: "Quelle alternative à IPTV Smarters Pro choisir sur Windows ?"
+    answer: "IPTVnator est une option documentée pour M3U, Xtream et EPG. Kodi répond à un usage de centre multimédia ; Player Zero propose un lecteur de bureau avec fonctions PRO. Le choix dépend des accès et du budget."
+  - question: "Peut-on utiliser TiviMate sur Windows ?"
+    answer: "L'application officielle TiviMate est conçue pour Android TV. Aucune version Windows native n'est identifiée dans les sources officielles consultées. Un émulateur Android ne constitue pas une édition Windows officielle et n'a pas été testé ici."
+---
+
+import { Image } from "astro:assets";
+import imgM3uXtream from "./inline/lecteurs-iptv-windows/m3u-vs-xtream.webp";
+import imgFlux from "./inline/lecteurs-iptv-windows/flux-iptv.webp";
+import imgConfig from "./inline/lecteurs-iptv-windows/config-iptvnator.webp";
+
+Un lecteur IPTV Windows permet de lire des chaînes et des vidéos à partir de vos propres sources. Il ne fournit pas de bouquet TV : vous devez disposer d'un fichier ou d'un lien M3U, ou d'identifiants Xtream Codes compatibles, avec les droits d'accès correspondants. Voici cinq applications à comparer, leurs différences et les étapes pour configurer l'IPTV sur PC.
+
+<Image src={imgFlux} alt="Schéma du trajet d'un flux IPTV, de la source Internet au lecteur sur PC puis à l'écran" widths={[480, 800, 1200]} sizes="(max-width: 1180px) 100vw, 760px" />
+
+
+## Quel lecteur IPTV Windows choisir selon votre usage ?
+
+Pour ouvrir une playlist sans payer, commencez par VLC. Pour réunir M3U, Xtream et guide TV dans une application dédiée, regardez IPTVnator. Kodi convient davantage à un PC utilisé comme centre multimédia. IPTV Player Zero propose une autre interface de bureau, avec des fonctions PRO payantes. Pour IPTV Smarters Pro, vérifiez l'édition Windows et ses conditions avant l'installation.
+
+**Comparatif documentaire vérifié le 10 novembre 2026.** Les versions ci-dessous sont celles repérées sur les pages officielles, pas des versions installées et testées par notre rédaction. Aucune mesure de performances ni comparaison pratique sur Windows 10/11 n'est publiée à ce stade.
+
+| Lecteur | Usage adapté | Windows / version documentée | M3U | Xtream Codes | Guide TV | Gratuité et limites |
+|---|---|---|---|---|---|---|
+| **IPTVnator** | Playlists et comptes dans une interface dédiée | Windows 10/11, installateur x64 ; **0.25.0** | Oui | Oui | XMLTV et guide de la source | Gratuit et open source ; certaines possibilités de lecture dépendent du moteur choisi |
+| **VLC Media Player** | Lire un flux ou vérifier une playlist | Windows 10/11 pris en charge ; **3.0.24** | Oui | Pas de formulaire natif ; utiliser un lien M3U fourni séparément | Pas de configuration XMLTV comparable aux lecteurs dédiés | Gratuit et open source ; navigation moins orientée télévision |
+| **Kodi + IPTV Simple Client** | Centraliser télévision et médias | Windows ; **Kodi 21.3** ; vérifier la config requise et l'extension | Oui, avec l'extension | Pas de connexion native dans le parcours IPTV Simple Client présenté ici | Oui, avec une source adaptée | Gratuit et open source ; installation de l'extension nécessaire |
+| **IPTV Smarters Pro** | Retrouver l'environnement Smarters | Téléchargement Windows proposé ; version et minimum Windows non précisés sur la page consultée | Annoncé ; à confirmer dans l'édition Windows | Connexion API annoncée ; à vérifier dans l'édition Windows | Annoncé ; dépend de la source et de l'édition | Conditions Windows insuffisamment détaillées pour affirmer une gratuité complète |
+| **IPTV Player Zero** | Direct, guide TV et fonctions de bureau réunis | Windows x86-64 ; **1.9.42** ; minimum Windows non précisé | Oui | Oui | Oui, avec données de guide | Téléchargement gratuit ; **essai PRO de 72 h**, puis fonctions complètes payantes |
+
+Sources : [IPTVnator](https://4gray.github.io/iptvnator/download/), [VideoLAN](https://images.videolan.org/vlc/download-windows.html), [Kodi](https://kodi.tv/download/windows/), [IPTV Simple Client](https://kodi.tv/addons/omega/pvr.iptvsimple/), [Smarters](https://getiptvsmarters.com/download) et [Player Zero](https://iptvplayerzero.com/product-facts).
+
+Un téléchargement gratuit ne signifie pas que toutes les fonctions le sont. Une **version gratuite limitée** conserve certaines possibilités après installation ; un **essai gratuit** ouvre temporairement des fonctions payantes. Quand les limites ne sont pas précisées, mieux vaut les signaler que les deviner.
+
+## Les lecteurs IPTV pour Windows à comparer
+
+### IPTVnator
+
+IPTVnator est une application IPTV Windows adaptée à ceux qui veulent organiser plusieurs sources. Le projet prend en charge les playlists M3U/M3U8, les comptes Xtream Codes, les catégories de chaînes, les favoris et le guide électronique des programmes. Il est gratuit et open source.
+
+La version **0.25.0**, publiée le 8 novembre 2026, dispose d'un installateur Windows 10/11 en 64 bits. Les téléchargements sont accessibles depuis le [site du projet et ses versions GitHub](https://4gray.github.io/iptvnator/download/).
+
+**Sa limite concrète :** le lecteur intégré ne décode pas nécessairement tous les flux. Le projet propose aussi des options de lecture avec MPV ou VLC, ce qui ajoute un réglage ou une installation selon le moteur choisi. L'accès au replay et à la VOD dépend du compte connecté.
+
+### VLC
+
+VLC convient pour lire un lien, ouvrir une playlist ou déterminer si un flux fonctionne dans un autre logiciel. VideoLAN propose ce lecteur IPTV Windows gratuit sans licence payante. La version repérée est **3.0.24**, avec plusieurs programmes d'installation selon l'architecture du PC.
+
+**Sa limite concrète :** VLC reste un lecteur multimédia généraliste. La liste de lecture ne remplace pas une interface avec catégories, favoris et grille EPG intégrée. Il ne propose pas de formulaire natif réunissant serveur, identifiant et mot de passe Xtream.
+
+Si votre service ne fournit que des identifiants Xtream, demandez-lui un lien M3U compatible ou choisissez un lecteur adapté. Téléchargez VLC depuis [VideoLAN](https://www.videolan.org/vlc/), puis ouvrez **Média → Ouvrir un flux réseau** pour une URL.
+
+### Kodi
+
+Kodi s'adresse aux utilisateurs qui souhaitent réunir télévision, vidéos et autres médias, notamment sur un PC relié à un téléviseur. C'est un logiciel gratuit et open source.
+
+Pour les playlists IPTV, installez **PVR IPTV Simple Client** depuis le dépôt officiel. Cette extension prend en charge les listes M3U et les informations EPG. Le parcours présenté repose sur une playlist et un guide, sans formulaire Xtream natif.
+
+La page Windows propose **Kodi 21.3 Omega**, en installateur ou via le Microsoft Store. **Sa limite concrète :** la configuration demande davantage d'étapes qu'une simple ouverture de flux. Vérifiez aussi les exigences graphiques et le décodage vidéo de votre ordinateur.
+
+### IPTV Smarters Pro
+
+IPTV Smarters Pro présente une interface organisée autour du direct et des contenus à la demande. Le site décrit notamment M3U, connexion par API, favoris, EPG, sous-titres et sélection de piste audio, avec des réserves selon les appareils et les sources.
+
+**Le point à vérifier sur PC :** ces informations décrivent le produit dans son ensemble. Elles ne suffisent pas à garantir toutes les fonctions dans chaque édition Windows.
+
+La [page de téléchargement](https://getiptvsmarters.com/download) propose un fichier Windows, mais ne précise pas clairement son numéro de version, le minimum système ni toutes les conditions tarifaires. Nous ne le présentons donc pas comme un logiciel entièrement gratuit et testé sur Windows 10/11. Les conditions d'une édition mobile ne permettent pas de conclure pour le PC.
+
+### IPTV Player Zero
+
+IPTV Player Zero regroupe télévision en direct, guide, favoris et VOD dans une interface de bureau. L'éditeur documente M3U/M3U8, Xtream Codes et Windows x86-64. La version publiée repérée est **1.9.42**.
+
+Le téléchargement est gratuit et l'essai PRO dure **72 heures après le premier import**. L'éditeur affiche une licence PRO à **12,99 dollars pour un ordinateur**, sans abonnement récurrent ; vérifiez le tarif et les conditions du canal d'achat utilisé.
+
+**Sa limite concrète :** un essai complet ne garantit pas que toutes les fonctions restent gratuites ensuite. Les pages consultées ne permettent pas de dresser une liste certaine des limites après l'essai.
+
+## Comment choisir un lecteur compatible avec votre configuration ?
+
+### Vérifier sa version de Windows et le programme à installer
+
+Ouvrez **Paramètres → Système → Informations système**, puis relevez l'édition de Windows et le type de processeur. Un installateur x64 et un programme ARM64 ne désignent pas la même architecture. Choisissez la version proposée pour votre machine, en consultant la configuration requise de l'éditeur.
+
+Pour un lecteur IPTV Windows 11 ou un lecteur IPTV Windows 10, vérifiez séparément la compatibilité du logiciel et celle du flux vidéo. Le codec, la résolution et les pilotes graphiques influencent le décodage.
+
+Pour un lecteur IPTV pour PC peu puissant, commencez par un flux modeste et surveillez la consommation de mémoire RAM ainsi que l'utilisation du processeur. Nous ne désignons pas de gagnant en performances sans mesures sur une configuration identique.
+
+### Choisir selon ses accès : fichier M3U, URL ou identifiants Xtream
+
+| Accès disponible | Ce qu'il contient | Ce qu'il faut choisir |
+|---|---|---|
+| **Fichier M3U** | Une liste de sources enregistrée sur le PC | Un import de fichier local |
+| **Lien M3U** | Une adresse permettant de récupérer la liste | Un import de playlist par URL |
+| **Compte Xtream Codes** | Adresse du serveur et identifiants de connexion | Une application prenant explicitement en charge ce mode |
+
+<Image src={imgM3uXtream} alt="Comparaison des deux modes de connexion : playlist M3U d'un côté, compte Xtream Codes avec serveur, identifiant et mot de passe de l'autre" widths={[480, 800, 1200]} sizes="(max-width: 1180px) 100vw, 760px" />
+
+**M3U8 n'est pas toujours synonyme de bouquet de chaînes.** Une adresse terminée par `.m3u8` peut aussi être le manifeste HLS d'un seul programme ou flux. Son contenu détermine ce que le lecteur affiche.
+
+Un lecteur M3U pour Windows ne propose donc pas forcément une connexion Xtream. Inversement, un lecteur IPTV compatible Xtream Codes n'inclut aucun compte : vous devez fournir vos propres accès.
+
+### Vérifier les fonctions utiles : EPG, favoris, sous-titres et replay
+
+Un lecteur IPTV Windows avec guide TV a besoin de données de programmes. L'EPG peut venir d'une URL EPG au format XMLTV ou du service connecté. Une playlist contenant des chaînes ne garantit pas un guide complet.
+
+Les favoris et les catégories facilitent la navigation ; la gestion de plusieurs playlists évite de remplacer sa source à chaque changement. Vérifiez également les sous-titres et la piste audio, dont la disponibilité dépend du contenu et du moteur de lecture.
+
+Le **replay** nécessite à la fois une source proposant des archives et une application compatible. Il se distingue de la pause du direct et de l'enregistrement local. Un bouton présent dans l'interface ne crée pas d'archives absentes du service.
+
+## Comment configurer l'IPTV sur Windows ?
+
+L'exemple suivant utilise **IPTVnator**, car sa documentation décrit les deux modes de connexion. Il s'agit d'une procédure fondée sur les guides du projet, pas du compte rendu d'un essai effectué par notre rédaction.
+
+### 1. Télécharger et installer le bon logiciel
+
+1. Ouvrez la [page officielle de téléchargement d'IPTVnator](https://4gray.github.io/iptvnator/download/).
+2. Choisissez le programme Windows correspondant à votre configuration.
+3. Lancez l'installation, puis ouvrez l'application.
+4. Ajoutez une première source. Les libellés peuvent évoluer avec une mise à jour du logiciel.
+
+Utilisez la version stable plutôt qu'une version expérimentale pour une première installation. Si Windows signale un problème, vérifiez le fichier et sa provenance avant de poursuivre.
+
+### 2. Ajouter une playlist M3U ou un compte Xtream
+
+**Pour ouvrir une playlist M3U sur Windows :**
+
+1. Ouvrez l'ajout de playlist.
+2. Choisissez l'import par URL ou par fichier.
+3. Collez le lien M3U ou sélectionnez le fichier local.
+4. Nommez la source, validez, puis ouvrez une chaîne.
+
+Pour **ajouter un compte Xtream Codes sur PC**, sélectionnez la méthode Xtream, puis renseignez les informations séparément :
+
+| Champ | Information à saisir |
+|---|---|
+| Nom de la source | Un nom de votre choix |
+| Adresse du serveur | L'adresse exacte fournie, avec son port éventuel |
+| Identifiant | Le nom d'utilisateur du compte |
+| Mot de passe | Le mot de passe associé |
+
+Un lien M3U complet ne doit pas être collé au hasard dans chacun de ces champs. Suivez les indications de votre service et celles de l'application.
+
+<Image src={imgConfig} alt="Illustration des étapes d'ajout d'une source dans un lecteur IPTV sur Windows : import M3U et saisie d'un compte Xtream" widths={[480, 800, 1200]} sizes="(max-width: 1180px) 100vw, 760px" />
+
+### 3. Charger le guide TV et enregistrer ses favoris
+
+Avec une playlist M3U, ajoutez la source XMLTV fournie pour le guide dans les réglages EPG. Attendez son chargement, puis vérifiez une chaîne dont vous connaissez le programme.
+
+Avec Xtream, l'application peut recevoir les programmes du serveur, si celui-ci les fournit. Leur absence ne signifie pas forcément que la connexion au compte a échoué.
+
+Ajoutez ensuite quelques chaînes aux favoris et contrôlez qu'elles restent accessibles après redémarrage.
+
+## Que faire si votre lecteur IPTV ne fonctionne pas ?
+
+Procédez dans le même ordre : **vérifier le logiciel, isoler la source, puis contrôler la connexion**. Changez un réglage à la fois pour comprendre son effet.
+
+### La playlist ne se charge pas
+
+1. **Logiciel :** confirmez que vous avez choisi le bon mode d'import, puis réessayez avec une source autorisée connue pour fonctionner.
+2. **Source :** vérifiez l'adresse exacte, la validité des accès et le contenu du fichier. Une page de connexion enregistrée sous un nom M3U ne constitue pas une playlist.
+3. **Connexion :** recherchez une erreur réseau, un serveur indisponible ou une règle de sécurité bloquant l'application. Ne désactivez pas globalement vos protections.
+
+### Les chaînes apparaissent, mais la vidéo ne démarre pas
+
+1. **Logiciel :** notez le message d'erreur. Essayez le même flux dans VLC ou un autre moteur compatible.
+2. **Source :** testez plusieurs chaînes et vérifiez la limite de connexions simultanées du compte.
+3. **Connexion :** comparez avec un autre accès réseau autorisé, si possible, pour isoler un problème local.
+
+Un écran noir avec du son peut orienter vers un problème de décodage vidéo. Un refus d'accès appelle plutôt une vérification du compte ou du serveur.
+
+### La lecture coupe ou ralentit
+
+1. **Logiciel :** mettez-le à jour, fermez les tâches lourdes et observez le processeur, le GPU et la mémoire dans le Gestionnaire des tâches. Testez l'accélération matérielle si l'application la propose.
+2. **Source :** comparez une chaîne moins exigeante et consultez l'état du service.
+3. **Connexion :** essayez Ethernet, interrompez les gros transferts et vérifiez la stabilité du Wi-Fi.
+
+Augmenter la mise en mémoire tampon peut absorber certaines variations, mais augmente parfois le délai au démarrage ou au changement de chaîne. Aucun lecteur ne garantit une lecture sans coupures si la source ou le réseau est instable.
+
+### Le guide TV reste vide ou affiche des horaires décalés
+
+1. **Logiciel :** contrôlez la dernière actualisation, l'heure et le fuseau de Windows, puis les réglages EPG.
+2. **Source :** vérifiez que l'URL XMLTV fonctionne et contient des programmes pour la période affichée. Pour un compte Xtream, vérifiez aussi les données fournies par le serveur.
+3. **Connexion :** confirmez que le téléchargement du guide aboutit.
+
+Si le guide fonctionne pour certaines chaînes seulement, examinez la correspondance entre leur identifiant `tvg-id` et celui du XMLTV. Si les programmes sont tous décalés de la même durée, contrôlez les fuseaux avant d'appliquer une correction.
+
+## Conclusion : quel lecteur IPTV Windows retenir ?
+
+Le meilleur lecteur IPTV Windows dépend de vos accès et de votre manière de regarder la télévision. VLC constitue une première option gratuite pour lire une playlist ; IPTVnator réunit davantage de fonctions IPTV documentées ; Kodi convient à un projet de centre multimédia. Player Zero propose une autre expérience de bureau, à évaluer pendant son essai. Smarters demande une vérification plus précise de l'édition Windows.
+
+Commencez par une source autorisée, quelques chaînes et un guide valide. Vérifiez ensuite la navigation et les fonctions utiles avant d'envisager une licence payante.

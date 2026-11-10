@@ -1,4 +1,6 @@
 ---
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { config, urls } from "../lib/site.ts";
 import { t } from "../lib/i18n.ts";
 
@@ -7,6 +9,18 @@ interface Props {
 }
 
 const { path } = Astro.props;
+
+// Logo SVG : on l'inline (plutôt qu'un <img>) pour qu'il hérite du thème
+// clair/sombre de la page (data-theme), sinon les contours sombres
+// disparaîtraient en mode sombre. Les autres formats restent en <img>.
+let inlineLogo: string | undefined;
+if (config.logo && config.logo.endsWith(".svg")) {
+  try {
+    inlineLogo = await readFile(join(process.cwd(), "public", config.logo), "utf8");
+  } catch {
+    inlineLogo = undefined;
+  }
+}
 
 const links =
   config.nav.length > 0
@@ -27,10 +41,20 @@ const items = links.map((link) => ({
 <header class="site-header">
   <div class="wrap hdr">
     <a class="logo" href="/" aria-label={`${config.name}, ${t.home.toLowerCase()}`}>
-      <span class="logo-mark" aria-hidden="true">
-        {config.logoMark}
-      </span>
-      <span>{config.name}</span>
+      {
+        inlineLogo ? (
+          <span class="logo-img logo-inline" set:html={inlineLogo} />
+        ) : config.logo ? (
+          <img class="logo-img" src={config.logo} alt={config.name} />
+        ) : (
+          <>
+            <span class="logo-mark" aria-hidden="true">
+              {config.logoMark}
+            </span>
+            <span>{config.name}</span>
+          </>
+        )
+      }
     </a>
     <div class="hdr-tools">
       <button
@@ -67,8 +91,9 @@ const items = links.map((link) => ({
           </ul>
         </nav>
       </div>
-      <a class="icon-btn" href={urls.search()} aria-label={t.search}>
+      <form class="hdr-search" role="search" action={urls.search()} method="get">
         <svg
+          class="hdr-search-icon"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -79,7 +104,8 @@ const items = links.map((link) => ({
           <circle cx="11" cy="11" r="7"></circle>
           <path d="M20 20l-3.5-3.5"></path>
         </svg>
-      </a>
+        <input type="search" name="q" placeholder={t.searchPlaceholder} aria-label={t.search} />
+      </form>
       <button
         type="button"
         class="icon-btn"

@@ -15,23 +15,6 @@ const categories = config.categories.map((c) => ({
 ---
 
 <aside class="sidebar" aria-label={t.sidebar}>
-  <section>
-    <h2 class="widget-title">{t.search}</h2>
-    <form class="search-form" role="search" action={urls.search()} method="get">
-      <label for="sidebar-q" class="sr-only">
-        {t.searchLabel}
-      </label>
-      <input
-        id="sidebar-q"
-        type="search"
-        name="q"
-        placeholder={t.searchPlaceholder}
-        autocomplete="off"
-      />
-      <button type="submit">{t.search}</button>
-    </form>
-  </section>
-
   <section class="about">
     <div class="person">
       <Avatar name={author.name} />
@@ -67,10 +50,10 @@ const categories = config.categories.map((c) => ({
           <a href={p.url}>
             <Image
               class="thumb"
-              src={p.entry.data.cover}
+              src={p.entry.data.thumbnail ?? p.entry.data.cover}
               alt=""
-              width={128}
-              height={128}
+              width={240}
+              height={135}
               fit="cover"
               loading="lazy"
             />

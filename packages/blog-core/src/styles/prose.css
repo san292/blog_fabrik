@@ -84,3 +84,31 @@
 :root[data-theme="dark"] .astro-code span {
   color: var(--shiki-dark) !important;
 }
+
+/* FAQ en fin d'article */
+.faq {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.faq h2 {
+  margin: 0 0 20px;
+}
+.faq-item {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.faq-item:last-child {
+  border-bottom: 0;
+}
+.faq dt {
+  font-family: var(--f-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.faq dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}

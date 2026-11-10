@@ -111,6 +111,27 @@ export default function blogCore(input: SiteConfigInput): AstroIntegration {
         for (const route of routesFor(config)) injectRoute({ ...route, prerender: true });
       },
 
+      // En dev, empêche le navigateur de mettre en cache les images optimisées (/_image).
+      // Sans ça, remplacer une image sur disque ne se voit pas : le nom de fichier ne change
+      // pas, donc Chrome ressert l'ancienne version. En build/prod, les noms sont hashés.
+      "astro:server:setup": ({ server }) => {
+        server.middlewares.use((req, res, next) => {
+          if (req.url && req.url.includes("/_image")) {
+            // Astro pose un Cache-Control d'un an sur /_image. On intercepte
+            // setHeader pour le forcer à no-store, sinon Chrome garde l'ancienne
+            // image après un remplacement (même nom de fichier → même URL).
+            const original = res.setHeader.bind(res);
+            res.setHeader = (name: string, value: string | number | readonly string[]) => {
+              if (String(name).toLowerCase() === "cache-control") {
+                return original("Cache-Control", "no-store, must-revalidate");
+              }
+              return original(name, value);
+            };
+          }
+          next();
+        });
+      },
+
       "astro:build:done": async ({ dir, logger }) => {
         const outDir = fileURLToPath(dir);
 
